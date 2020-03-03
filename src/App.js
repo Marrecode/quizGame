@@ -1,28 +1,12 @@
 import React from 'react';
-<<<<<<< HEAD
 import {db } from './modules/firebase';
 
 db.collection("music_quiz").get().then(function(querySnapshot) {
   querySnapshot.forEach(function(doc) {
-=======
-import './App.css';
-import {db } from './modules/firebase';
-
-/*db.collection("music_quiz").get().then((querySnapshot) => {
-  querySnapshot.forEach((doc) => {
-      console.log(`${doc.id} => ${doc.data()}`);
-  });
-});*/
-
-db.collection("music_quiz").get().then(function(querySnapshot) {
-  querySnapshot.forEach(function(doc) {
-      // doc.data() is never undefined for query doc snapshots
->>>>>>> quizgame
       console.log(doc.id, " => ", doc.data());
   });
 });
 
-<<<<<<< HEAD
 const postData = () => {
   const citiesRef = db.collection("cities");
 
@@ -50,25 +34,12 @@ citiesRef.doc("BJ").set({
 }
 
 postData();
-=======
-
-
-
->>>>>>> quizgame
 
 
 function App() {
   return (
     <div className="App">
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
-      <h1>Hej</h1>
-      <h2>DÅ</h2>
->>>>>>> quizgame
-=======
->>>>>>> c82bfbbd926992e105ddefd760509db09da3e229
     </div>
   );
 }
