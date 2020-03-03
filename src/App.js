@@ -23,12 +23,7 @@ db.collection("music_quiz").get().then(function(querySnapshot) {
 function App() {
   return (
     <div className="App">
-<<<<<<< HEAD
-      <h1>Hej</h1>
-      <h2>DÅ</h2>
-=======
      <p>hello</p>
->>>>>>> quizgame
     </div>
   );
 }
