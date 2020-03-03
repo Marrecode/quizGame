@@ -33,7 +33,10 @@
     ]
   },
   "devDependencies": {
+<<<<<<< HEAD
     "axios": "^0.19.2",
+=======
+>>>>>>> quizgame
     "firebase": "^7.9.3"
   }
 }
