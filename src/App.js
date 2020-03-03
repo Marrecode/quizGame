@@ -61,11 +61,14 @@ function App() {
   return (
     <div className="App">
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
       <h1>Hej</h1>
       <h2>DÅ</h2>
 >>>>>>> quizgame
+=======
+>>>>>>> c82bfbbd926992e105ddefd760509db09da3e229
     </div>
   );
 }
