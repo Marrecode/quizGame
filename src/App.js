@@ -1,12 +1,10 @@
 import React from 'react';
 import './App.css';
-import axios from 'axios';
 
 function App() {
   return (
     <div className="App">
-      <h1>Hej</h1>
-      <h2>DÅ</h2>
+      
     </div>
   );
 }
