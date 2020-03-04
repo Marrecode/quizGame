@@ -1,0 +1,23 @@
+$body-bg: #333;
+$body-color: black;
+
+@import "~bootstrap/scss/bootstrap";
+
+.container {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    margin: 1rem;
+}
+
+.style-buttons {
+    display:flex;
+    justify-content: space-evenly;
+    font-size: 0.2rem;
+}
+
+#stylebutton {
+    font-size: 0.2rem;
+}
