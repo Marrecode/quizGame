@@ -1,6 +1,6 @@
 import React from 'react';
 import {db } from './modules/firebase';
-import Quiz from './components/Quiz';
+import Quiz from './Quiz';
 import './index.scss';
 
 db.collection("music_quiz").get().then(function(querySnapshot) {
