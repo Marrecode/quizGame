@@ -1,5 +1,7 @@
 import React from 'react';
 import {db } from './modules/firebase';
+import Quiz from './components/Quiz';
+import './index.scss';
 
 db.collection("music_quiz").get().then(function(querySnapshot) {
   querySnapshot.forEach(function(doc) {
@@ -39,7 +41,7 @@ postData();
 function App() {
   return (
     <div className="App">
-
+      <Quiz />
     </div>
   );
 }
