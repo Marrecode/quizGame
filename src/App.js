@@ -2,12 +2,17 @@ import React from 'react';
 import {db } from './modules/firebase';
 import Quiz from './Quiz';
 import './index.scss';
+import AddQuiz from './AddQuiz';
+
+
 
 db.collection("music_quiz").get().then(function(querySnapshot) {
   querySnapshot.forEach(function(doc) {
       console.log(doc.id, " => ", doc.data());
   });
 });
+
+
 
 const postData = () => {
   const citiesRef = db.collection("cities");
@@ -38,10 +43,14 @@ citiesRef.doc("BJ").set({
 postData();
 
 
+
+
 function App() {
   return (
     <div className="App">
       <Quiz />
+      <AddQuiz />
+        
     </div>
   );
 }

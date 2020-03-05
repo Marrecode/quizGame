@@ -22,3 +22,8 @@ $body-color: black;
     font-size: 0.2rem;
 }
 
+form {
+    display:flex;
+    margin-bottom: 2rem;
+    flex-direction: column;
+}
