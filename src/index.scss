@@ -10,6 +10,10 @@ $body-color: black;
 
 .card {
     margin: 1rem;
+
+        .card-body {
+            text-align: center;
+        }
 }
 
 .style-buttons {

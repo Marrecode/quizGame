@@ -1,25 +1,19 @@
 import React from 'react';
-import Question from './Question'
+import Card from './Card'
 
 const Quiz = (props) => {
 
-    console.log(props.quiz)
+    const QnA = props.info.questions.map(eachQnA => eachQnA)
+    console.log(QnA)
+    const A = QnA.map(ans => ans.answers)
+    const Q = QnA.map(Qs => Qs.question)
+    const Corr = QnA.map(n => n.correct)
 
-    const array = props.quiz.questions.map(q => <Question questions={q} />)
-
-// For props av front page
-    //Titel
-    //Questions
-    //Answers
-    //Correct answer?
-
+    const card = props.info.questions.map(question => <Card questions={question} key={question.points} />)
+ 
     return (
         <div className="container">
-            <h1>{props.quiz.title}</h1>
-
-                {/* <Question quiz={props.quiz} />   */}
-                {array}
-            
+            {card}
         </div>
     )
 }
