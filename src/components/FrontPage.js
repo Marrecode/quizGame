@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { db } from '../modules/firebase'
 import QuizList from './QuizList'
+import Navbar from './Navbar'
 
 
 class FrontPage extends Component {
@@ -26,15 +27,6 @@ class FrontPage extends Component {
 
     }
 
-    // render() {
-    //     return (
-            
-    //         <Display
-    //         eachQuiz={this.state.quiz}
-    //         />
-    //     )
-    // }
-
     render() {
 
         const newArr = this.state.quiz.map(quiz => {
@@ -44,10 +36,15 @@ class FrontPage extends Component {
         })
     
         return (
-            <div className="card-group">
-                {newArr}
+            <div>
+                <Navbar />
+    
+                <div className="container d-flex w-100 justify-content-center">
+                    <div className="card-group">
+                        {newArr}
+                    </div>
+                </div>
             </div>
-                // {quizArr}
         )
 
     }

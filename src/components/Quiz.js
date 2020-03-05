@@ -2,11 +2,6 @@ import React from 'react';
 import Card from './Card'
 
 const Quiz = (props) => {
-
-    console.log('props', props)
-    console.log('props info', props.info)
-    console.log('props params', props.match.params)
-
     
 
     const QnA = props.info.questions.map(eachQnA => eachQnA)

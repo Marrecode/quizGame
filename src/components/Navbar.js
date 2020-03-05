@@ -1,0 +1,31 @@
+import React from 'react'
+// import {NavLink} from 'react-router-dom'
+
+const Navbar = () => {
+
+    return(
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <div className="container">
+                <a className="navbar-brand" href="#">The Awesome Quizzes</a>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarNav">
+                    <ul className="navbar-nav ml-auto">
+                    <li className="nav-item active">
+                        <a className="nav-link" href="#">Quizzes <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="#">Login</a>
+                    </li>
+                    </ul>
+            </div>
+            </div>
+        </nav>
+    )
+}
+
+export default Navbar
+
+
+
