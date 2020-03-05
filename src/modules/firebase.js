@@ -4,7 +4,7 @@ import 'firebase/firestore';
 const config = {
     apiKey: "AIzaSyBhmzr758cS5PKIucxfR_-JP0b5H_-Kyz4",
     authDomain: "quiz-50290.firebaseapp.com",
-    databaseURL: "https://quiz-50290.firebaseio.com",
+    databaseURL: "npm install -g firebase-tools",
     projectId: "quiz-50290",
     storageBucket: "quiz-50290.appspot.com",
     messagingSenderId: "763292832679",
