@@ -3,9 +3,6 @@ import React from 'react'
 
 const Card = (props) => {
 
-//    console.log('hjvjhfvjyvyvy', props.questions)
-//    console.log(props.questions.question)
-   
 
     return (
         <div className="card w-100">
