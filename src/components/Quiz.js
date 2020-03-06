@@ -1,11 +1,12 @@
 import React from 'react'
 import Card from './Card'
 import { db } from '../modules/firebase'
+import { v4 as uuidv4 } from 'uuid';
 
 class Quiz extends React.Component {
     
     state = {
-        quiz: null
+        quiz: undefined
     }
     
     componentDidMount() {
@@ -13,15 +14,11 @@ class Quiz extends React.Component {
             this.setState({quiz: querySnapshot.data()})
         })
     }
-    
-    componentDidUpdate() {
-        console.log(this.state.quiz)
-    }
 
  render() { 
-
-   const card = this.state.quiz ? this.state.quiz.questions.map(info => <Card data={info}/>) : console.log('error')
-    console.log(this.state.quiz)
+    
+    const card = this.state.quiz ? this.state.quiz.questions.map(info => <Card key={uuidv4()} data={info}/>) : console.log('error')
+  
      return (
     <div className="container">
       {card}
