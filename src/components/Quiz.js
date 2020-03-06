@@ -2,27 +2,32 @@ import React from 'react'
 import Card from './Card'
 import { db } from '../modules/firebase'
 
-const Quiz = (props) => {
-
-    console.log('props', props)
-    console.log('props info', props.info)
-    console.log('props params', props.match.params)
-
+class Quiz extends React.Component {
     
+    state = {
+        quiz: null
+    }
+    
+    componentDidMount() {
+        db.collection('quiz').doc(this.props.match.params.quiz_id).get().then(querySnapshot => {
+            this.setState({quiz: querySnapshot.data()})
+        })
+    }
+    
+    componentDidUpdate() {
+        console.log(this.state.quiz)
+    }
 
-    const QnA = props.info.questions.map(eachQnA => eachQnA)
-    // console.log(QnA)
-    const A = QnA.map(ans => ans.answers)
-    const Q = QnA.map(Qs => Qs.question)
-    const Corr = QnA.map(n => n.correct)
+ render() { 
 
-    const card = props.info.questions.map(question => <Card questions={question} key={question.points} />)
- 
-    return (
-        <div className="container">
-            {card}
-        </div>
-    )
+   const card = this.state.quiz ? this.state.quiz.questions.map(info => <Card data={info}/>) : console.log('error')
+
+     return (
+    <div className="container">
+      {card}
+    </div>
+)}
+   
 }
 
 export default Quiz;
