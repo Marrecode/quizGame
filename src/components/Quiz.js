@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 class Quiz extends React.Component {
     
     state = {
-        quiz: undefined
+        quiz: undefined,
     }
     
     componentDidMount() {
@@ -19,12 +19,13 @@ class Quiz extends React.Component {
         e.preventDefault()
         console.log('submitting')
         console.log('e', e.target)
-
     }
 
  render() { 
 
-   const card = this.state.quiz ? this.state.quiz.questions.map(info => <Card data={info}/>) : ''
+    const card = this.state.quiz
+    ? this.state.quiz.questions.map(info => <Card data={info} name={uuidv4()} type={info.type} key={uuidv4()}/>)
+    : <h1 style={{color: '#fff'}}>Loading...</h1>
      return (
     <div className="container">
         <form onSubmit={this.handleSubmit}>
