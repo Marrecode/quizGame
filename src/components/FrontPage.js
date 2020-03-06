@@ -3,6 +3,7 @@ import { db } from '../modules/firebase'
 import QuizList from './QuizList'
 import AddQuiz from './AddQuiz'
 import { Link } from 'react-router-dom'
+import Navbar from './Navbar'
 
 
 class FrontPage extends Component {
@@ -31,15 +32,6 @@ class FrontPage extends Component {
 
     }
 
-    // render() {
-    //     return (
-            
-    //         <Display
-    //         eachQuiz={this.state.quiz}
-    //         />
-    //     )
-    // }
-
     render() {
 
         const newArr = this.state.quiz.map(quiz => {
@@ -50,15 +42,15 @@ class FrontPage extends Component {
     
         return (
             <div>
-                <div className="card-group">
-                    {newArr}
-                
+                <Navbar />
+    
+                <div className="container d-flex w-100 justify-content-center">
+                    <div className="card-group w-100 justify-content-center">
+                        {newArr}
+                    </div>
+                    <Link to="./AddQuiz" className="btn btn-success mt-3">Create Quiz</Link>
                 </div>
-                <Link to="./AddQuiz" className="btn btn-success mt-3">Create Quiz</Link>
             </div>
-            
-                // {quizArr}
-                
         )
 
     }

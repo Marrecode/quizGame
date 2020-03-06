@@ -1,8 +1,8 @@
 import React from 'react';
-import { Route, BrowserRouter, Switch } from 'react-router-dom';
+import { Route, BrowserRouter, Switch } from 'react-router-dom'
+import Quiz from './components/Quiz'
+import FrontPage from './components/FrontPage'
 import AddQuiz from './components/AddQuiz';
-import Quiz from './components/Quiz';
-import FrontPage from './components/FrontPage';
 
 
 const App = () => {
