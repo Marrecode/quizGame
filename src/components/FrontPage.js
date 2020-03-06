@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import { db } from '../modules/firebase'
 import QuizList from './QuizList'
+import AddQuiz from './AddQuiz'
+import { Link } from 'react-router-dom'
 
 
 class FrontPage extends Component {
@@ -21,8 +23,11 @@ class FrontPage extends Component {
                     description: doc.data().description
                 })   
             )
-            this.setState({quiz: quizzes})         
+            this.setState({quiz: quizzes})    
+               
         })
+
+        console.log(quizzes)  
 
     }
 
@@ -44,10 +49,16 @@ class FrontPage extends Component {
         })
     
         return (
-            <div className="card-group">
-                {newArr}
+            <div>
+                <div className="card-group">
+                    {newArr}
+                
+                </div>
+                <Link to="./AddQuiz" className="btn btn-success mt-3">Create Quiz</Link>
             </div>
+            
                 // {quizArr}
+                
         )
 
     }
