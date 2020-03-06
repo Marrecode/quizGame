@@ -24,7 +24,9 @@ class Quiz extends React.Component {
     console.log(this.state.quiz)
      return (
     <div className="container">
-      {card}
+        <form>
+            {card}
+        </form>
     </div>
 )}
    
