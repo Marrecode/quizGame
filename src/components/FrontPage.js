@@ -40,7 +40,7 @@ class FrontPage extends Component {
                 <Navbar />
     
                 <div className="container d-flex w-100 justify-content-center">
-                    <div className="card-group">
+                    <div className="card-group w-100 justify-content-center">
                         {newArr}
                     </div>
                 </div>

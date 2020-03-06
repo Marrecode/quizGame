@@ -3,10 +3,6 @@ import React from 'react'
 
 const Card = (props) => {
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master
     return (
         <div className="card w-100">
                 <div className="card-body">
