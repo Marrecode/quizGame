@@ -14,8 +14,6 @@ const QuizList = props => {
             </div>
             </Link>
         </div>
-            
-            
     )
 }
 
