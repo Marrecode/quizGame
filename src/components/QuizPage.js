@@ -2,11 +2,11 @@ import React from 'react'
 import Card from './Card'
 import { db } from '../modules/firebase'
 
-class Quiz extends React.Component {
+class QuizPage extends React.Component {
     
     state = {
         quiz: null,
-        points: 0
+        points: []
     }
     
     componentDidMount() {
@@ -17,21 +17,27 @@ class Quiz extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        // SHOW HOW MANY POINTS
+
+        let sumPoints = this.state.points.reduce((sum, points) =>{
+            if(!sum) {
+                sum = 0
+            }
+            return sum + points
+        }, 0);
+
+        console.log(sumPoints)
+        this.setState({
+            sumPoints: sumPoints
+        })
     }
 
-    handlePoints = (points, points2) => {
-        if(points !== 0) {
-            this.setState({
-                points: this.state.points + points
-            })
-        } else {
-            if(this.state.points !== 0) {
-                this.setState({
-                    points: this.state.points - points2
-                })
-            }
-        }
+    handlePoints = (points, index) => {
+        let array = this.state.points;
+        array[index] = points;
+
+        this.setState({
+            points: array
+        })
     }
 
  render() { 
@@ -47,9 +53,15 @@ class Quiz extends React.Component {
                 <button className="btn btn-success" type="submit">Send Answers</button>
             </div>
         </form>
+        <div>
+            {this.state.sumPoints
+                ? (<p>You have {this.state.sumPoints} points!</p>)
+                : ''
+            }
+        </div>
     </div>
 )}
    
 }
 
-export default Quiz;
+export default QuizPage

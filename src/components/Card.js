@@ -5,7 +5,7 @@ import Answer from './Answer'
 class Card extends React.Component {
 
     handleChange = (e) => {
-        this.props.onChange(this.setPoints(e.target.value), this.props.data.points)
+        this.props.onChange(this.setPoints(e.target.value), this.props.name)
     }
 
     checkIfRight = (a) => {
