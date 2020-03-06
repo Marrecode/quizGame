@@ -6,7 +6,8 @@ import { v4 as uuidv4 } from 'uuid';
 class Quiz extends React.Component {
     
     state = {
-        quiz: undefined
+        quiz: null,
+        points: 0
     }
     
     componentDidMount() {
@@ -17,14 +18,28 @@ class Quiz extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        console.log('submitting')
-        console.log('e', e.target)
+        // SHOW HOW MANY POINTS
+    }
 
+    handlePoints = (points, points2) => {
+        if(points !== 0) {
+            this.setState({
+                points: this.state.points + points
+            })
+        } else {
+            if(this.state.points !== 0) {
+                this.setState({
+                    points: this.state.points - points2
+                })
+            }
+        }
     }
 
  render() { 
 
-   const card = this.state.quiz ? this.state.quiz.questions.map(info => <Card data={info}/>) : ''
+    console.log(this.state.points)
+    let i = 0
+    const card = this.state.quiz ? this.state.quiz.questions.map(info => <Card key={i++} onChange={this.handlePoints} name={i++} data={info}/>) : ''
      return (
     <div className="container">
         <form onSubmit={this.handleSubmit}>

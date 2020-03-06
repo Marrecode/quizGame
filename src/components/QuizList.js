@@ -3,14 +3,20 @@ import { Link } from 'react-router-dom'
 
 const QuizList = props => {
     return(
-        <Link to={'/quiz/' + props.info.id}>
+        <div>
+        <Link to={'/quiz/' + props.info.id}></Link>
         <div className="card">
                 <div className="card-body">
                 <h5>{props.info.title}</h5>
                     <p className="card-text">{props.info.description}</p>
+                    
                 </div>
+                
             </div>
-            </Link>
+                <p>{props.info.question}</p>
+            </div>
+            
+            
     )
 }
 
