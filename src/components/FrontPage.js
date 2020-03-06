@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { db } from '../modules/firebase'
 import QuizList from './QuizList'
 import Navbar from './Navbar'
+import AddQuizForm from './form/AddQuizForm'
 
 
 class FrontPage extends Component {
@@ -44,6 +45,9 @@ class FrontPage extends Component {
                         {newArr}
                     </div>
                 </div>
+
+            <AddQuizForm />
+
             </div>
         )
 
