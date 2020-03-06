@@ -15,14 +15,23 @@ class Quiz extends React.Component {
         })
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault()
+        console.log('submitting')
+        console.log('e', e.target)
+
+    }
+
  render() { 
-    
-    const card = this.state.quiz ? this.state.quiz.questions.map(info => <Card key={uuidv4()} data={info}/>) : console.log('error')
-  
+
+   const card = this.state.quiz ? this.state.quiz.questions.map(info => <Card data={info}/>) : ''
      return (
     <div className="container">
-        <form>
-            {card}
+        <form onSubmit={this.handleSubmit}>
+            <div className="form-group">
+                {card}
+                <button className="btn btn-success" type="submit">Send Answers</button>
+            </div>
         </form>
     </div>
 )}
