@@ -3,22 +3,31 @@ import Card from './Card'
 import { db } from '../modules/firebase'
 
 class Quiz extends React.Component {
-
-    handleSubmit = () => {
-        console.log('Im submitting')
-    }
-
-    render() {
-        return (
-            <div className="container">
-                <form onSubmit={this.handleSubmit}>
-                    {/* {card} */}
     
-                    <button type="submit">Send answers</button>
-                </form>
-            </div>
-        )
+    state = {
+        quiz: null
     }
+    
+    componentDidMount() {
+        db.collection('quiz').doc(this.props.match.params.quiz_id).get().then(querySnapshot => {
+            this.setState({quiz: querySnapshot.data()})
+        })
+    }
+    
+    componentDidUpdate() {
+        console.log(this.state.quiz)
+    }
+
+ render() { 
+
+   const card = this.state.quiz ? this.state.quiz.questions.map(info => <Card data={info}/>) : console.log('error')
+    console.log(this.state.quiz)
+     return (
+    <div className="container">
+      {card}
+    </div>
+)}
+   
 }
 
 export default Quiz;

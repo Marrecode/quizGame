@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, BrowserRouter, Switch } from 'react-router-dom'
-
 import Quiz from './components/Quiz'
 import FrontPage from './components/FrontPage'
 
