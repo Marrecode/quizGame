@@ -7,8 +7,27 @@ class AddQuiz extends React.Component{
         title: '',
         answer: '',
         correct: '',
-        question: []
+        question: [],
+        steps: [''],
     }
+
+    handleAddStepClick = e => {
+        const steps = this.state.steps;
+        steps.push('');
+
+        this.setState({
+            steps
+        });
+    }
+
+    handleInputStepChange = (e, i) => {
+		const steps = this.state.steps;
+		steps[i] = e.target.value;
+
+		this.setState({
+			steps,
+		});
+	}
     
 
     handleForm = (e) => {
@@ -26,7 +45,7 @@ class AddQuiz extends React.Component{
 		})
 	}
 
-    handleInputTitleChange = (e) => {
+    handleInputChange = (e) => {
         console.log('something changed...', e.target.value);
 
         this.setState({
@@ -55,10 +74,11 @@ class AddQuiz extends React.Component{
                     aria-label="Title of you Quiz"
                     placeholder="Quiztitle"
                     className="form-control"
-                    onChange={this.handleInputTitleChange}
+                    onChange={this.handleInputChange}
 					value={this.state.title}
                 />
             </div>
+            
             
             <div className="input-group mt-4">
                 <label htmlFor="Question" className="question"></label>
@@ -68,11 +88,11 @@ class AddQuiz extends React.Component{
                     aria-label="Type in your question"
                     placeholder="Type your question:"
                     className="form-control"
-                    onChange={this.handleInputTitleChange}
+                    onChange={this.handleInputChange}
 					value={this.state.question}
                 />
                 <div className="input-group-append">
-                    <button className="btn btn-outline-secondary" type="button" id="buttonAdd">Add</button>
+                    <button className="btn btn-outline-secondary" type="button" id="buttonAdd"></button>
                 </div>
             </div>
             
@@ -84,33 +104,36 @@ class AddQuiz extends React.Component{
                     aria-label="your answer"
                     placeholder="your answer"
                     className="form-control"
-                    onChange={this.handleInputTitleChange}
-					value={this.state.question}
-                />
-                <div className="input-group-append">
-                    <button className="btn btn-outline-secondary" type="button" id="buttonAdd">Add</button>
-                </div>
-            </div>
-            
-            <div className="input-group mt-4">
-                <label htmlFor="Answer" className="buttonAdd"></label>
-                <input
-                    type="text"
-                    id="answer"
-                    aria-label="Type in your"
-                    placeholder="your answer"
-                    className="form-control"
-                    onChange={this.handleInputTitleChange}
+                    onChange={this.handleInputChange}
 					value={this.state.answer}
                 />
                 <div className="input-group-append">
-                    <button className="btn btn-outline-secondary" type="button" id="buttonAdd">Add</button>
+                    <button className="btn btn-outline-secondary" type="button" id="buttonAdd"></button>
                 </div>
             </div>
+            {
+            this.state.steps.map((step, i) => (
+            <div className="input-group mt-4">
+                <label htmlFor="Answer" className="buttonAdd"></label>
+                <input
+					type="text"
+					className="form-control"
+					onChange={e => { this.handleInputStepChange(e, i) }}
+					aria-label={`Type step ${i+1}`}
+					placeholder={`Type your answer`}
+					value={step}
+				/>
+                <div className="input-group-append">
+                    <button className="btn btn-outline-secondary" type="button" id="buttonAdd"></button>
+                </div>
+            </div>
+            ))
+            }
+            <button className="btn btn-primary" onClick={this.handleAddStepClick}>Add Step</button>
             <div className="btn-home">
             
             
-            </div>
+            </div>          
         </div>    
         <button type="submit" className="btn btn-primary mt-3">Submit</button>
         </form>
