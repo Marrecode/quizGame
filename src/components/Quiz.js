@@ -6,7 +6,7 @@ class Quiz extends React.Component {
     
     state = {
         quiz: null,
-        points: null
+        points: 0
     }
     
     componentDidMount() {
@@ -20,15 +20,17 @@ class Quiz extends React.Component {
         // SHOW HOW MANY POINTS
     }
 
-    handleCardChange = (points, points2) => {
+    handlePoints = (points, points2) => {
         if(points !== 0) {
             this.setState({
                 points: this.state.points + points
             })
         } else {
-            this.setState({
-                points: this.state.points - this.state.points
-            })
+            if(this.state.points !== 0) {
+                this.setState({
+                    points: this.state.points - points2
+                })
+            }
         }
     }
 
@@ -36,7 +38,7 @@ class Quiz extends React.Component {
 
     console.log(this.state.points)
     let i = 0
-    const card = this.state.quiz ? this.state.quiz.questions.map(info => <Card key={i++} onChange={this.handleCardChange} name={i++} data={info}/>) : ''
+    const card = this.state.quiz ? this.state.quiz.questions.map(info => <Card key={i++} onChange={this.handlePoints} name={i++} data={info}/>) : ''
      return (
     <div className="container">
         <form onSubmit={this.handleSubmit}>
