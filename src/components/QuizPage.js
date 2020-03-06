@@ -24,17 +24,15 @@ class QuizPage extends React.Component {
                 sum = 0
             }
             return sum + points
-        }, 0);
-
-        console.log(sumPoints)
+        }, 0)
         this.setState({
             sumPoints: sumPoints
         })
     }
 
     handlePoints = (points, index) => {
-        let array = this.state.points;
-        array[index] = points;
+        let array = this.state.points
+        array[index] = points
 
         this.setState({
             points: array
@@ -43,23 +41,28 @@ class QuizPage extends React.Component {
 
  render() { 
 
-    console.log(this.state.points)
-    let i = 0
-    const card = this.state.quiz ? this.state.quiz.questions.map(info => <Card key={i++} onChange={this.handlePoints} name={i++} data={info}/>) : ''
+    const card = this.state.quiz
+    ? this.state.quiz.questions.map(info => <Card data={info} name={uuidv4()} type={info.type} key={uuidv4()}/>)
+    : <h1 style={{color: '#fff'}}>Loading...</h1>
      return (
     <div className="container">
         <form onSubmit={this.handleSubmit}>
+            <h1>{this.state.quiz
+                    ? (this.state.quiz.title)
+                    : ''
+                    }
+            </h1>
             <div className="form-group">
                 {card}
+
+                {this.state.sumPoints >= 0
+                    ? (<p className="text-white">You have {this.state.sumPoints} points!</p>)
+                    : ''
+                }
+
                 <button className="btn btn-success" type="submit">Send Answers</button>
             </div>
         </form>
-        <div>
-            {this.state.sumPoints
-                ? (<p>You have {this.state.sumPoints} points!</p>)
-                : ''
-            }
-        </div>
     </div>
 )}
    

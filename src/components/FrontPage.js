@@ -4,6 +4,7 @@ import QuizList from './QuizList'
 import AddQuiz from './AddQuiz'
 import { Link } from 'react-router-dom'
 import Navbar from './Navbar'
+import AddQuizForm from './form/AddQuizForm'
 
 
 class FrontPage extends Component {
@@ -24,12 +25,8 @@ class FrontPage extends Component {
                     description: doc.data().description
                 })   
             )
-            this.setState({quiz: quizzes})    
-               
+            this.setState({quiz: quizzes})   
         })
-
-        console.log(quizzes)  
-
     }
 
     render() {
@@ -41,23 +38,19 @@ class FrontPage extends Component {
         })
     
         return (
-            <div>
-                <Navbar />
-    
-                <div className="container d-flex w-100 justify-content-center">
-                    <div className="card-group w-100 justify-content-center">
+            <div>    
+                <div className="container">
+                    <div className="card-group">
                         {newArr}
                     </div>
                     <Link to="./AddQuiz" className="btn btn-success mt-3">Create Quiz</Link>
                 </div>
+
+            <AddQuizForm />
+
             </div>
         )
-
     }
-
-
-
-
 }
 
 export default FrontPage
