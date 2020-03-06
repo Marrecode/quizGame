@@ -21,7 +21,7 @@ class Quiz extends React.Component {
  render() { 
 
    const card = this.state.quiz ? this.state.quiz.questions.map(info => <Card data={info}/>) : console.log('error')
-
+    console.log(this.state.quiz)
      return (
     <div className="container">
       {card}
