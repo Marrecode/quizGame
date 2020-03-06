@@ -4,6 +4,7 @@ import QuizList from './QuizList'
 import AddQuiz from './AddQuiz'
 import { Link } from 'react-router-dom'
 import Navbar from './Navbar'
+import AddQuizForm from './form/AddQuizForm'
 
 
 class FrontPage extends Component {
@@ -44,6 +45,9 @@ class FrontPage extends Component {
                     </div>
                     <Link to="./AddQuiz" className="btn btn-success mt-3">Create Quiz</Link>
                 </div>
+
+            <AddQuizForm />
+
             </div>
         )
     }
