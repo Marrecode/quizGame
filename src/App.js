@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, BrowserRouter, Switch } from 'react-router-dom'
-import Quiz from './components/Quiz'
+import QuizPage from './components/QuizPage'
 import FrontPage from './components/FrontPage'
 import AddQuiz from './components/AddQuiz';
 
@@ -14,7 +14,7 @@ const App = () => {
 				<Switch>
 					<Route exact path='/' component={FrontPage} />
 					<Route exact path='/AddQuiz' component={AddQuiz} />
-					<Route path='/quiz/:quiz_id' component={Quiz} />
+					<Route path='/quiz/:quiz_id' component={QuizPage} />
 					
 					{/* <Route component={NotFound} /> */}
 					

@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 class Card extends React.Component {
 
     handleChange = (e) => {
-        this.props.onChange(this.setPoints(e.target.value), this.props.data.points)
+        this.props.onChange(this.setPoints(e.target.value), this.props.name)
     }
 
     checkIfRight = (a) => {
