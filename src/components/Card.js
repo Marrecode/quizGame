@@ -64,8 +64,20 @@ class Card extends React.Component {
     const type = this.props.data.type
     const answers = (type === 'single')
     ?
-     this.props.data.answers.map(q => <Answer onChange={this.getPointsSingle} correct={this.props.data.correct} answer={q} name={this.props.name} key={i++} />)
-    : this.props.data.answers.map(q => <MultiAnswer onChange={this.getPointsMultiple} correct={this.props.data.correct} answer={q} name={this.props.name} key={i++} />)
+     this.props.data.answers.map(q => 
+        <Answer 
+        onChange={this.getPointsSingle}
+        correct={this.props.data.correct}
+        answer={q}
+        name={this.props.name}
+        key={i++} />)
+    : this.props.data.answers.map(q => 
+        <MultiAnswer
+        onChange={this.getPointsMultiple}
+        correct={this.props.data.correct}
+        answer={q}
+        name={this.props.name}
+        key={i++} />)
 
     return (
 

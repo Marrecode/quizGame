@@ -13,9 +13,6 @@ const AddCorrectAnswer = (props) => {
                 onChange={props.handleInputTitleChange}
                 value={props.question}
                 />
-            <div className="input-group-append">
-                <button className="btn btn-outline-secondary" type="button" id="buttonAdd">Add</button>
-            </div>
         </div>
     )
 }

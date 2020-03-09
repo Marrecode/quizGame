@@ -9,33 +9,54 @@ import AddType from './form-components/AddType'
 
 export class AddQuizForm extends Component {
     state = {
-        title: undefined,
-        questions: [
-            {
-                answers: undefined,
-                points: undefined,
-                type: undefined,
-                correct: undefined,
-                question: undefined
-            }
-            
-        ],
-        description: undefined
+                answers: [''],
+                points: 0,
+                type: '',
+                correct: '',
+                question: '' 
+    }
+
+    handleTypeSelect = (e) => {
+        e.preventDefault()
+
+        console.log(e.target.value)
+
+        const questions = this.state.questions
+        questions[0].type = e.target.value
+
+        this.setState({
+            questions
+        })
+      
+        console.log(this.state.questions[0].type)
+
+    }
+
+
+    handleInputAnswer = (e) => {
+        e.preventDefault()
+
+        
+
+        console.log(this.state.questions[0].answers)
+
     }
 
     handleForm = (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
         db.collection("quiz").add(this.state).then(res => {
             console.log(res)
         }).catch(err => {
             console.error(err)
+
         })
     }
 
     AddQuestion = (e) => { 
        const questArr = this.state.questions.push({[e.target.id]: e.target.value})
        this.setState({questions: questArr})
+       console.log(this.state.questions)
     }
 
     handleInputTitleChange = (e) => {
@@ -44,27 +65,28 @@ export class AddQuizForm extends Component {
         })
     }
     render() {
+
+        
+
+
         return(           
-        <>
-            <h1>Create your Quiz</h1>
-            <div className="btn-home">
-                <Link to="/" className="btn btn-danger mt-3">Home</Link>
-            </div>
+        <div style={{minWidth: '100%'}}>
             
-            <form onSubmit={this.handleForm}>
+            <form onSubmit={this.handleForm} >
                 <AddTitle title={this.state.title} onChange={this.handleInputTitleChange}/>
-                <AddType type={this.state.type} onChange={this.handleInputTitleChange} />
-                <AddQuestions question={this.state.questions} onChange={this.handleInputTitleChange} />
-                <AddAnswers answer={this.state.answers} onChange={this.handleInputTitleChange}/>
+                <AddType type={this.state.type} onChange={this.handleTypeSelect} />
+                <AddQuestions question={this.state.questions} onChange={this.handleInputTitleChange}  />
+                <AddAnswers answer={this.state.questions[0].answers} onChange={this.handleInputAnswer}/>
                 <AddCorrectAnswer correct={this.state.correct} onChange={this.handleInputTitleChange}/>
             </form>
             <div>
                 <h1>Create your Quiz</h1>
+                <button type="submit" className="btn btn-primary mt-3" onClick={this.handleForm}>Submit</button>
                 <div className="btn-home">
                     <Link to="/" className="btn btn-danger mt-3">Home</Link>
                 </div>
             </div>
-        </>
+        </div>
         )
     }
 }
