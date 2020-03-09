@@ -1,6 +1,6 @@
 import React from 'react'
-import Card from './Card'
-import { db } from '../modules/firebase'
+import Card from '../Card'
+import { db } from '../../modules/firebase'
 // import { v4 as uuidv4 } from 'uuid';
 
 class QuizPage extends React.Component {

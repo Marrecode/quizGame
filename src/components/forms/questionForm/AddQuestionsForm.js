@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import {Link, NavLink} from 'react-router-dom'
-import { db } from '../../modules/firebase'
-import AddQuestions from './form-components/AddQuestions'
-import AddAnswers from './form-components/AddAnswers'
+import { db } from '../../../modules/firebase'
+import AddQuestions from './questionFormComponents/AddQuestions'
+import AddAnswers from './questionFormComponents/AddAnswers'
 import AddTitle from '../AddTitle'
-import AddCorrectAnswer from './form-components/AddCorrectAnswer'
-import AddType from './form-components/AddType'
+import AddCorrectAnswer from './questionFormComponents/AddCorrectAnswer'
+import AddType from './questionFormComponents/AddType'
 
-export class AddQuizForm extends Component {
+class AddQuizForm extends Component {
     state = {
             answers: [''],
             points: 0,
@@ -53,19 +53,23 @@ export class AddQuizForm extends Component {
             [e.target.id]: e.target.value,
         })
     }
+<<<<<<< HEAD:src/components/form/AddQuizForm.js
 
 
 
     render() {
 
+=======
+    render() {
+>>>>>>> master:src/components/forms/questionForm/AddQuestionsForm.js
         return(           
         <div style={{minWidth: '100%'}}>
             
             <form onSubmit={this.handleForm} >
-                <AddTitle title={this.state.title} onChange={this.handleInputTitleChange}/>
+                
                 <AddType type={this.state.type} onChange={this.handleTypeSelect} />
                 <AddQuestions question={this.state.questions} onChange={this.handleInputTitleChange}  />
-                <AddAnswers answer={this.state.questions[0].answers} onChange={this.handleInputAnswer}/>
+                <AddAnswers answer={this.state.answers} onChange={this.handleInputAnswer}/>
                 <AddCorrectAnswer correct={this.state.correct} onChange={this.handleInputTitleChange}/>
                 <button type="submit" className="btn btn-primary mt-3">Submit</button>
             </form>

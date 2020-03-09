@@ -1,17 +1,19 @@
 import React  from 'react';
 import { Link } from 'react-router-dom'
-import { db } from '../modules/firebase';
+import { db } from '../../modules/firebase';
 
 class AddTitle extends React.Component{
     state = {
         title: '',
+        isSubmitted: false,
     }
+
 
     handleForm = (e) => {
         e.preventDefault();
         
         const Create = {
-            title: this.state.title,
+            title: this.state.title
         }
 
         db.collection("quiz").add( Create ).then(() => {
@@ -19,6 +21,9 @@ class AddTitle extends React.Component{
 		}).catch(err => {
             console.error(err)
         })
+        this.setState({
+			isSubmitted: true,
+		})
 }
 
     handleInputChange = (e) => {
@@ -37,6 +42,7 @@ class AddTitle extends React.Component{
 
             <form onSubmit={this.handleForm}>
             
+<<<<<<< HEAD:src/components/AddTitle.js
                 <div className="form-group">
 
                     <div className="input-group mt-4">
@@ -56,6 +62,18 @@ class AddTitle extends React.Component{
                 {/* <Link to={'./AddQuizForm'} className="btn btn-primary mt-3">Submit</Link> */}
                 <button type="submit">Add title</button>
             </form>
+=======
+                    
+        </div>    
+        
+        <button type="submit" className="btn btn-primary mt-3">Submit</button>
+        </form>
+
+        {	this.state.isSubmitted
+						? <AddQuizForm data={this.state} />
+						: ""
+				}
+>>>>>>> master:src/components/forms/AddTitle.js
         
         </div>
         )
