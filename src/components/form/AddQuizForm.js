@@ -3,7 +3,6 @@ import {Link, NavLink} from 'react-router-dom'
 import { db } from '../../modules/firebase'
 import AddQuestions from './form-components/AddQuestions'
 import AddAnswers from './form-components/AddAnswers'
-import AddTitle from './form-components/AddTitle'
 import AddCorrectAnswer from './form-components/AddCorrectAnswer'
 import AddType from './form-components/AddType'
 
@@ -35,9 +34,6 @@ export class AddQuizForm extends Component {
 
     handleInputAnswer = (e) => {
         e.preventDefault()
-
-        
-
         console.log(this.state.questions[0].answers)
 
     }
@@ -69,10 +65,9 @@ export class AddQuizForm extends Component {
         <div style={{minWidth: '100%'}}>
             
             <form onSubmit={this.handleForm} >
-                <AddTitle title={this.state.title} onChange={this.handleInputTitleChange}/>
                 <AddType type={this.state.type} onChange={this.handleTypeSelect} />
                 <AddQuestions question={this.state.questions} onChange={this.handleInputTitleChange}  />
-                <AddAnswers answer={this.state.questions[0].answers} onChange={this.handleInputAnswer}/>
+                <AddAnswers answer={this.state.answers} onChange={this.handleInputAnswer}/>
                 <AddCorrectAnswer correct={this.state.correct} onChange={this.handleInputTitleChange}/>
             </form>
             <div>
