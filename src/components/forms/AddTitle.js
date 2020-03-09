@@ -1,7 +1,11 @@
 import React  from 'react';
 import { Link } from 'react-router-dom'
+<<<<<<< HEAD:src/components/AddTitle.js
 import { db } from '../modules/firebase';
 import AddQuizForm from './form/AddQuizForm';
+=======
+import { db } from '../../modules/firebase';
+>>>>>>> master:src/components/forms/AddTitle.js
 
 class AddTitle extends React.Component{
     state = {
@@ -15,7 +19,7 @@ class AddTitle extends React.Component{
         
         console.log('want to add', this.state);
         const Create = {
-            title: this.state.title,
+            title: this.state.title
         }
 
         db.collection("quiz").add( Create ).then(doc => {
