@@ -9,17 +9,15 @@ import AddType from './questionFormComponents/AddType'
 
 class AddQuizForm extends Component {
     state = {
-                answers: [''],
-                points: 0,
-                type: '',
-                correct: '',
-                question: '' 
+            answers: [''],
+            points: 0,
+            type: '',
+            correct: '',
+            question: '' 
     }
 
     handleTypeSelect = (e) => {
         e.preventDefault()
-
-        console.log(e.target.value)
 
         const questions = this.state.questions
         questions[0].type = e.target.value
@@ -27,19 +25,12 @@ class AddQuizForm extends Component {
         this.setState({
             questions
         })
-      
-        console.log(this.state.questions[0].type)
-
     }
 
 
     handleInputAnswer = (e) => {
         e.preventDefault()
-
         
-
-        console.log(this.state.questions[0].answers)
-
     }
 
     handleForm = (e) => {
@@ -49,14 +40,12 @@ class AddQuizForm extends Component {
             console.log(res)
         }).catch(err => {
             console.error(err)
-
         })
     }
 
     AddQuestion = (e) => { 
        const questArr = this.state.questions.push({[e.target.id]: e.target.value})
        this.setState({questions: questArr})
-       console.log(this.state.questions)
     }
 
     handleInputTitleChange = (e) => {
@@ -69,7 +58,6 @@ class AddQuizForm extends Component {
         <div style={{minWidth: '100%'}}>
             
             <form onSubmit={this.handleForm} >
-                
                 <AddType type={this.state.type} onChange={this.handleTypeSelect} />
                 <AddQuestions question={this.state.questions} onChange={this.handleInputTitleChange}  />
                 <AddAnswers answer={this.state.answers} onChange={this.handleInputAnswer}/>
@@ -82,7 +70,6 @@ class AddQuizForm extends Component {
                 <div className="btn-home">
                     <Link to="/" className="btn btn-danger mt-3">Home</Link>
                 </div>
-                
             </div>
         </div>
         )

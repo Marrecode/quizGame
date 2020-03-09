@@ -37,6 +37,8 @@ class Card extends React.Component {
     
     checkMultiple = () => {
         let points = 0
+
+        // FIXA SÅ ATT MAN INTE FÅR ALLA RÄTT OM MAN BARA KLICKAR I ALLT GDDDAMMIIITTT
         
         for(let i = 0; i < this.state.multipleCorrectArray.length; i++) {
             if(this.props.data.correct.includes(this.state.multipleCorrectArray[i])) {

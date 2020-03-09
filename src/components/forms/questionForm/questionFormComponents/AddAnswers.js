@@ -19,7 +19,7 @@ const AddAnswers = (props) => {
                 type="button" 
                 id="buttonAdd"
                 onClick={props.onChange}
-                    >Add</button>
+                >Add</button>
                 </div>
             </div>
     )
