@@ -3,23 +3,21 @@ import {Link, NavLink} from 'react-router-dom'
 import { db } from '../../modules/firebase'
 import AddQuestions from './form-components/AddQuestions'
 import AddAnswers from './form-components/AddAnswers'
-import AddTitle from './form-components/AddTitle'
+import AddTitle from '../AddTitle'
 import AddCorrectAnswer from './form-components/AddCorrectAnswer'
 import AddType from './form-components/AddType'
 
 export class AddQuizForm extends Component {
     state = {
-                answers: [''],
-                points: 0,
-                type: '',
-                correct: '',
-                question: '' 
+            answers: [''],
+            points: 0,
+            type: '',
+            correct: '',
+            question: '' 
     }
 
     handleTypeSelect = (e) => {
         e.preventDefault()
-
-        console.log(e.target.value)
 
         const questions = this.state.questions
         questions[0].type = e.target.value
@@ -27,19 +25,12 @@ export class AddQuizForm extends Component {
         this.setState({
             questions
         })
-      
-        console.log(this.state.questions[0].type)
-
     }
 
 
     handleInputAnswer = (e) => {
         e.preventDefault()
-
         
-
-        console.log(this.state.questions[0].answers)
-
     }
 
     handleForm = (e) => {
@@ -49,14 +40,12 @@ export class AddQuizForm extends Component {
             console.log(res)
         }).catch(err => {
             console.error(err)
-
         })
     }
 
     AddQuestion = (e) => { 
        const questArr = this.state.questions.push({[e.target.id]: e.target.value})
        this.setState({questions: questArr})
-       console.log(this.state.questions)
     }
 
     handleInputTitleChange = (e) => {
@@ -64,10 +53,10 @@ export class AddQuizForm extends Component {
             [e.target.id]: e.target.value,
         })
     }
+
+
+
     render() {
-
-        
-
 
         return(           
         <div style={{minWidth: '100%'}}>
