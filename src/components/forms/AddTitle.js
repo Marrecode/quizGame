@@ -6,6 +6,7 @@ import AddQuestionsForm from '../forms/questionForm/AddQuestionsForm'
 class AddTitle extends React.Component{
     state = {
         title: '',
+        id: null,
         isSubmitted: false,
     }
 
@@ -13,21 +14,27 @@ class AddTitle extends React.Component{
     handleForm = (e) => {
         e.preventDefault();
         
-        const Create = {
-            title: this.state.title
+        const create = {
+            title: this.state.title,
+            questions: []
         }
 
-        db.collection("quiz").add( Create ).then(() => {
-			console.log("My title is: ", this.state.title)
+        db.collection("quiz").add( create ).then(doc=> {
+            console.log("My title is: ", this.state.title)
+            this.setState({
+                id: doc.id
+            },() => this.props.history.push('/addquiz/' + this.state.id))
 		}).catch(err => {
             console.error(err)
         })
+
         this.setState({
 			isSubmitted: true,
 		})
 }
 
     handleInputChange = (e) => {
+        console.log(e.target.value)
         this.setState({
             [e.target.id]: e.target.value,
         })
@@ -43,17 +50,24 @@ class AddTitle extends React.Component{
 
             <form onSubmit={this.handleForm}> 
 
-            <input className="form-control">
-
-            </input>
+            <input
+                    type="text"
+                    id="title"
+                    aria-label="Title of you Quiz"
+                    placeholder="Quiztitle"
+                    className="form-control"
+                    onChange={this.handleInputChange}
+					value={this.state.title}
+                />
         
-        <button type="submit" className="btn btn-primary mt-3">Submit</button>
+        {/* <button type="submit" className="btn btn-primary mt-3">Submit</button> */}
+        <Link onClick={this.handleForm} to={'./addquiz/' + this.state.id}>Submit</Link>
         </form>
 
-        {	this.state.isSubmitted
-						? <AddQuestionsForm data={this.state} />
-						: ""
-				}
+        {/* {	this.state.isSubmitted
+					? <AddQuestionsForm data={this.state} />
+					: ""
+				} */}
         
         </div>
         )
