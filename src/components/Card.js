@@ -17,7 +17,7 @@ class Card extends React.Component {
             this.props.onChange(0, this.props.name)
         }
     }
-
+    
     getPointsMultiple = (e) => {
         let checked = e.target.value
         //Kolla om det redan finns i en array. Om det redan finns, ta bort det. Om det inte finns, lägg till det.
@@ -36,26 +36,38 @@ class Card extends React.Component {
     }
     
     checkMultiple = () => {
-        //Kolla om arrayen stämmer överens med den correcta arrayen, om det gör det, sätt poäng, om inte, sätt poäng till 0
-        if(this.state.multipleCorrectArray.length !== this.props.data.correct.length) {
-            return 0
-        } else {
-            let sortedStateArray = this.state.multipleCorrectArray
-            sortedStateArray.sort()
-
-            let sortedCorrectArray = this.props.data.correct.sort()
-
-            for(let i = 0; i < sortedCorrectArray.length; i++) {
-                if(sortedCorrectArray[i] !== sortedStateArray[i]) {
-                    return 0
-                } else {
-                    return this.props.data.points
-                }
+        let points = 0
+        
+        for(let i = 0; i < this.state.multipleCorrectArray.length; i++) {
+            if(this.props.data.correct.includes(this.state.multipleCorrectArray[i])) {
+                points = points + (this.props.data.points/this.props.data.correct.length)
             }
         }
+        
+        return points
     }
 
-    // FIXA SÅ ATT MAN KAN FÅ OLIKA POÄNG BEROENDE PÅ HUR MÅNGA RÄTT MAN FÅR I MULTIPLE!!!
+    
+    // Ger endast poäng om man klickat i alla rätta svar...
+    // checkMultiple = () => {
+    //     //Kolla om arrayen stämmer överens med den correcta arrayen, om det gör det, sätt poäng, om inte, sätt poäng till 0
+    //     if(this.state.multipleCorrectArray.length !== this.props.data.correct.length) {
+    //         return 0
+    //     } else {
+    //         let sortedStateArray = this.state.multipleCorrectArray
+    //         sortedStateArray.sort()
+
+    //         let sortedCorrectArray = this.props.data.correct.sort()
+
+    //         for(let i = 0; i < sortedCorrectArray.length; i++) {
+    //             if(sortedCorrectArray[i] !== sortedStateArray[i]) {
+    //                 return 0
+    //             } else {
+    //                 return this.props.data.points
+    //             }
+    //         }
+    //     }
+    // }
 
     
     render() {
@@ -81,17 +93,20 @@ class Card extends React.Component {
 
     return (
 
-        <div className="card w-100">
+        <div className="card mb-3 w-100">
             <div className="card-body">
-                <h5 className="card-title">Fråga 1</h5>
-                <p className="card-text">{this.props.data.question}</p>
-                <div style={{
-                    textAlign: 'left',
-                    display:'flex',
-                    marginLeft: '40%',
-                    justifyContent: 'center',
-                    flexDirection: 'column', 
-                    alignItems:'justify'}}>
+                <h5 className="card-title text-center">Fråga {this.props.name + 1}</h5>
+                <p className="card-text text-center">{this.props.data.question}</p>
+                <div 
+                    className="d-flex flex-column ml-5"
+                // style={{
+                //     textAlign: 'left',
+                //     display:'flex',
+                //     marginLeft: '40%',
+                //     justifyContent: 'center',
+                //     flexDirection: 'column', 
+                //     alignItems:'justify'}}
+                    >
                     {answers}
                 </div>
             </div>
