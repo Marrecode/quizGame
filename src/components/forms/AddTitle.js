@@ -12,7 +12,7 @@ class AddTitle extends React.Component{
         
         console.log('want to add', this.state);
         const Create = {
-            title: this.state.title,
+            title: this.state.title
         }
 
         db.collection("quiz").add( Create ).then(doc => {

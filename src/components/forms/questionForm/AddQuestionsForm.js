@@ -7,7 +7,7 @@ import AddTitle from '../AddTitle'
 import AddCorrectAnswer from './questionFormComponents/AddCorrectAnswer'
 import AddType from './questionFormComponents/AddType'
 
-export class AddQuizForm extends Component {
+class AddQuizForm extends Component {
     state = {
                 answers: [''],
                 points: 0,
