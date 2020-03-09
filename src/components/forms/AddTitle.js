@@ -1,32 +1,40 @@
 import React  from 'react';
 import { Link } from 'react-router-dom'
 import { db } from '../../modules/firebase';
+import AddQuestionsForm from '../forms/questionForm/AddQuestionsForm'
 
 class AddTitle extends React.Component{
     state = {
         title: '',
+        id: null,
+        isSubmitted: false,
     }
+
 
     handleForm = (e) => {
         e.preventDefault();
         
-        console.log('want to add', this.state);
-        const Create = {
-            title: this.state.title
+        const create = {
+            title: this.state.title,
+            questions: []
         }
 
-        db.collection("quiz").add( Create ).then(doc => {
-			console.log("My title is: ", this.state.title)
+        db.collection("quiz").add( create ).then(doc=> {
+            console.log("My title is: ", this.state.title)
+            this.setState({
+                id: doc.id
+            },() => this.props.history.push('/addquiz/' + this.state.id))
 		}).catch(err => {
             console.error(err)
-            
-            
         })
+
+        this.setState({
+			isSubmitted: true,
+		})
 }
 
     handleInputChange = (e) => {
-        console.log('something changed...', e.target.value);
-
+        console.log(e.target.value)
         this.setState({
             [e.target.id]: e.target.value,
         })
@@ -35,19 +43,14 @@ class AddTitle extends React.Component{
     render() {
         return(           
         <div>
-        <h1>Create your Quiz</h1>
-        <div className="btn-home">
-            <Link to="/" className="btn btn-danger mt-3">Home</Link>
-        </div>
+            <h1>Create your Quiz</h1>
+            <div className="btn-home">
+                <Link to="/" className="btn btn-danger mt-3">Home</Link>
+            </div>
 
-        <form onSubmit={this.handleForm}>
-        
-        <div className="form-group">
+            <form onSubmit={this.handleForm}> 
 
-            
-            <div className="input-group mt-4">
-                <label htmlFor="Title" className="title"></label>
-                <input
+            <input
                     type="text"
                     id="title"
                     aria-label="Title of you Quiz"
@@ -56,12 +59,15 @@ class AddTitle extends React.Component{
                     onChange={this.handleInputChange}
 					value={this.state.title}
                 />
-            </div>
-            
-                    
-        </div>    
-        <Link to={'./questionForm/AddQuestionsForm.js'}  className="btn btn-primary mt-3">Submit</Link>
+        
+        {/* <button type="submit" className="btn btn-primary mt-3">Submit</button> */}
+        <Link onClick={this.handleForm} to={'./addquiz/' + this.state.id}>Submit</Link>
         </form>
+
+        {/* {	this.state.isSubmitted
+					? <AddQuestionsForm data={this.state} />
+					: ""
+				} */}
         
         </div>
         )

@@ -19,7 +19,7 @@ class QuizPage extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault()
 
-        let sumPoints = this.state.points.reduce((sum, points) =>{
+        let sumPoints = this.state.points.reduce((sum, points) => {
             if(!sum) {
                 sum = 0
             }
