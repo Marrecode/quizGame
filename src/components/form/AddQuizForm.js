@@ -52,12 +52,14 @@ export class AddQuizForm extends Component {
                 <AddQuestions question={this.state.questions} onChange={this.handleInputTitleChange} />
                 <AddAnswers answer={this.state.answers} onChange={this.handleInputTitleChange}/>
                 <AddCorrectAnswer correct={this.state.correct} onChange={this.handleInputTitleChange}/>
+                <button type="submit" className="btn btn-primary mt-3">Submit</button>
             </form>
             <div>
                 <h1>Create your Quiz</h1>
                 <div className="btn-home">
                     <Link to="/" className="btn btn-danger mt-3">Home</Link>
                 </div>
+                
             </div>
         </>
         )

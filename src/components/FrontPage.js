@@ -5,6 +5,7 @@ import AddQuiz from './AddQuiz'
 import { Link } from 'react-router-dom'
 import Navbar from './Navbar'
 import AddQuizForm from './form/AddQuizForm'
+import AddTitle from './AddTitle'
 
 
 class FrontPage extends Component {
@@ -43,7 +44,7 @@ class FrontPage extends Component {
                     <div className="card-group">
                         {newArr}
                     </div>
-                    <Link to={'/AddQuizForm'} className="btn btn-success mt-3">Create Quiz</Link>
+                    <Link to={'./AddTitle'} className="btn btn-success mt-3">Create Quiz</Link>
                 </div>
 
             </div>
