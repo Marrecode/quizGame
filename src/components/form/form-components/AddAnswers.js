@@ -2,7 +2,7 @@ import React from 'react'
 
 const AddAnswers = (props) => {
     return (
-        <div className="input-group mt-4">
+            <div className="input-group mt-4">
             <label htmlFor="Answer" className="question"></label>
                 <input
                 type="text"
@@ -11,12 +11,17 @@ const AddAnswers = (props) => {
                 placeholder="add answer"
                 className="form-control"
                 onChange={props.handleInputTitleChange}
-                value={props.question}
+                value={props.answer}
                 />
-        <div className="input-group-append">
-            <button className="btn btn-outline-secondary" type="button" id="buttonAdd">Add</button>
-        </div>
-    </div>
+            <div className="input-group-append">
+                <button 
+                className="btn btn-outline-secondary"
+                type="button" 
+                id="buttonAdd"
+                onClick={props.onChange}
+                    >Add</button>
+                </div>
+            </div>
     )
 }
 
