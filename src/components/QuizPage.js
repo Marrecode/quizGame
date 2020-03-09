@@ -1,7 +1,7 @@
 import React from 'react'
 import Card from './Card'
 import { db } from '../modules/firebase'
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 
 class QuizPage extends React.Component {
     
@@ -39,10 +39,17 @@ class QuizPage extends React.Component {
         })
     }
 
+    getHowManyPointsTotal = () => {
+        return this.state.quiz.questions.reduce((sum, question) => {
+            return sum + question.points
+        }, 0)
+    }
+
  render() { 
 
+    let i = 0
     const card = this.state.quiz
-    ? this.state.quiz.questions.map(info => <Card data={info} name={uuidv4()} type={info.type} key={uuidv4()}/>)
+    ? this.state.quiz.questions.map(info => <Card onChange={this.handlePoints} data={info} name={i++} type={info.type} key={i++}/>)
     : <h1 style={{color: '#fff'}}>Loading...</h1>
      return (
     <div className="container">
@@ -56,7 +63,7 @@ class QuizPage extends React.Component {
                 {card}
 
                 {this.state.sumPoints >= 0
-                    ? (<p className="text-white">You have {this.state.sumPoints} points!</p>)
+                    ? (<p className="text-white">You have {this.state.sumPoints} points out of {this.getHowManyPointsTotal()}!</p>)
                     : ''
                 }
 
