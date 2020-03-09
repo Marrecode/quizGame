@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import {Link, NavLink} from 'react-router-dom'
-import { db } from '../../modules/firebase'
-import AddQuestions from './form-components/AddQuestions'
-import AddAnswers from './form-components/AddAnswers'
-import AddCorrectAnswer from './form-components/AddCorrectAnswer'
-import AddType from './form-components/AddType'
+import { db } from '../../../modules/firebase'
+import AddQuestions from './questionFormComponents/AddQuestions'
+import AddAnswers from './questionFormComponents/AddAnswers'
+import AddTitle from '../AddTitle'
+import AddCorrectAnswer from './questionFormComponents/AddCorrectAnswer'
+import AddType from './questionFormComponents/AddType'
 
-export class AddQuizForm extends Component {
+class AddQuizForm extends Component {
     state = {
                 answers: [''],
                 points: 0,
@@ -69,6 +70,7 @@ export class AddQuizForm extends Component {
                 <AddQuestions question={this.state.questions} onChange={this.handleInputTitleChange}  />
                 <AddAnswers answer={this.state.answers} onChange={this.handleInputAnswer}/>
                 <AddCorrectAnswer correct={this.state.correct} onChange={this.handleInputTitleChange}/>
+                <button type="submit" className="btn btn-primary mt-3">Submit</button>
             </form>
             <div>
                 <h1>Create your Quiz</h1>
@@ -76,6 +78,7 @@ export class AddQuizForm extends Component {
                 <div className="btn-home">
                     <Link to="/" className="btn btn-danger mt-3">Home</Link>
                 </div>
+                
             </div>
         </div>
         )
