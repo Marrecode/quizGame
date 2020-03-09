@@ -1,11 +1,14 @@
 import React  from 'react';
 import { Link } from 'react-router-dom'
 import { db } from '../modules/firebase';
+import AddQuizForm from './form/AddQuizForm';
 
 class AddTitle extends React.Component{
     state = {
         title: '',
+        isSubmitted: false,
     }
+
 
     handleForm = (e) => {
         e.preventDefault();
@@ -22,6 +25,9 @@ class AddTitle extends React.Component{
             
             
         })
+        this.setState({
+			isSubmitted: true,
+		})
 }
 
     handleInputChange = (e) => {
@@ -60,8 +66,14 @@ class AddTitle extends React.Component{
             
                     
         </div>    
-        <Link to={'./AddQuizForm'}  className="btn btn-primary mt-3">Submit</Link>
+        
+        <button type="submit" className="btn btn-primary mt-3">Submit</button>
         </form>
+
+        {	this.state.isSubmitted
+						? <AddQuizForm data={this.state} />
+						: ""
+				}
         
         </div>
         )
