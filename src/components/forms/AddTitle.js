@@ -1,10 +1,7 @@
 import React  from 'react';
 import { Link } from 'react-router-dom'
 import { db } from '../../modules/firebase';
-<<<<<<< HEAD
-=======
 import AddQuestionsForm from '../forms/questionForm/AddQuestionsForm'
->>>>>>> master
 
 class AddTitle extends React.Component{
     state = {
@@ -44,13 +41,27 @@ class AddTitle extends React.Component{
                 <Link to="/" className="btn btn-danger mt-3">Home</Link>
             </div>
 
-            <form onSubmit={this.handleForm}> 
+            <form onSubmit={this.handleForm}>
 
-            <input className="form-control">
+        <div className="form-group">
 
-            </input>
-        
-        <button type="submit" className="btn btn-primary mt-3">Submit</button>
+
+            <div className="input-group mt-4">
+                <label htmlFor="Title" className="title"></label>
+                <input
+                    type="text"
+                    id="title"
+                    aria-label="Title of you Quiz"
+                    placeholder="Quiztitle"
+                    className="form-control"
+                    onChange={this.handleInputChange}
+					value={this.state.title}
+                />
+            </div>
+
+
+        </div>    
+        <button> className="btn btn-primary mt-3">Submit</button> 
         </form>
 
         {	this.state.isSubmitted
