@@ -2,8 +2,7 @@ import React from 'react';
 import { Route, BrowserRouter, Switch } from 'react-router-dom'
 import QuizPage from './components/QuizPage'
 import FrontPage from './components/FrontPage'
-import AddQuiz from './components/AddQuiz'
-import AddQuizForm from './components/form/AddQuizForm'
+import AddQuestionsForm from '././components/forms/questionForm/AddQuestionsForm'
 import Navbar from './components/Navbar'
 import AddTitle from './components/AddTitle'
 
@@ -18,9 +17,9 @@ const App = () => {
 				<Navbar />
 				<Switch>
 					<Route exact path='/' component={FrontPage} />
-					<Route exact path='/AddTitle' component={AddTitle} />
+					<Route exact path='/forms/AddTitle' component={AddTitle} />
 					<Route path='/quiz/:quiz_id' component={QuizPage} />
-					<Route path='/AddTitle/AddQuizForm' component={AddQuizForm} />
+					
 					
 					{/* <Route component={NotFound} /> */}
 					
