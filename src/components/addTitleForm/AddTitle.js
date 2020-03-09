@@ -1,6 +1,6 @@
 import React  from 'react';
 import { Link } from 'react-router-dom'
-import { db } from '../modules/firebase';
+import { db } from '../../modules/firebase';
 
 class AddTitle extends React.Component{
     state = {

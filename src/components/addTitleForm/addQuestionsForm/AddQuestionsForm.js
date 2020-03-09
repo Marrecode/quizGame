@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import {Link, NavLink} from 'react-router-dom'
-import { db } from '../../modules/firebase'
-import AddQuestions from './form-components/AddQuestions'
-import AddAnswers from './form-components/AddAnswers'
-import AddTitle from './form-components/AddTitle'
-import AddCorrectAnswer from './form-components/AddCorrectAnswer'
-import AddType from './form-components/AddType'
+import { db } from '../../../modules/firebase'
+import AddQuestions from './questionFormComponents/AddQuestions'
+import AddAnswers from './questionFormComponents/AddAnswers'
+import AddTitle from '../AddTitle'
+import AddCorrectAnswer from './questionFormComponents/AddCorrectAnswer'
+import AddType from './questionFormComponents/AddType'
 
 export class AddQuizForm extends Component {
     state = {
