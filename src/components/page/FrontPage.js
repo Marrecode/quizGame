@@ -1,10 +1,6 @@
 import React, {Component} from 'react'
 import { db } from '../../modules/firebase'
 import QuizList from './QuizList'
-<<<<<<< HEAD
-=======
-// import AddQuiz from './AddQuiz'
->>>>>>> master
 import { Link } from 'react-router-dom'
 import Navbar from '../page/Navbar'
 import AddQuestionsForm from '../forms/questionForm/AddQuestionsForm'
