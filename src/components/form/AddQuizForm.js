@@ -86,7 +86,6 @@ export class AddQuizForm extends Component {
                 <div className="btn-home">
                     <Link to="/" className="btn btn-danger mt-3">Home</Link>
                 </div>
-                
             </div>
         </div>
         )
