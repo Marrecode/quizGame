@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import { db } from '../../modules/firebase'
 import QuizList from './QuizList'
-import AddQuiz from './AddQuiz'
+// import AddQuiz from './AddQuiz'
 import { Link } from 'react-router-dom'
-import Navbar from './Navbar'
-import AddQuizForm from './form/AddQuizForm'
-import AddTitle from './AddTitle'
+import Navbar from '../page/Navbar'
+import AddQuestionsForm from '../forms/questionForm/AddQuestionsForm'
+import AddTitle from '../forms/AddTitle'
 
 
 class FrontPage extends Component {

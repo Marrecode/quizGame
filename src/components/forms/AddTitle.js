@@ -1,6 +1,7 @@
 import React  from 'react';
 import { Link } from 'react-router-dom'
 import { db } from '../../modules/firebase';
+import AddQuestionsForm from '../forms/questionForm/AddQuestionsForm'
 
 class AddTitle extends React.Component{
     state = {
@@ -41,12 +42,16 @@ class AddTitle extends React.Component{
             </div>
 
             <form onSubmit={this.handleForm}> 
+
+            <input className="form-control">
+
+            </input>
         
         <button type="submit" className="btn btn-primary mt-3">Submit</button>
         </form>
 
         {	this.state.isSubmitted
-						? <AddQuizForm data={this.state} />
+						? <AddQuestionsForm data={this.state} />
 						: ""
 				}
         

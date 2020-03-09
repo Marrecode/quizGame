@@ -58,7 +58,6 @@ class AddQuizForm extends Component {
         <div style={{minWidth: '100%'}}>
             
             <form onSubmit={this.handleForm} >
-                
                 <AddType type={this.state.type} onChange={this.handleTypeSelect} />
                 <AddQuestions question={this.state.questions} onChange={this.handleInputTitleChange}  />
                 <AddAnswers answer={this.state.answers} onChange={this.handleInputAnswer}/>
