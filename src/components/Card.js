@@ -81,17 +81,20 @@ class Card extends React.Component {
 
     return (
 
-        <div className="card w-100">
+        <div className="card mb-3 w-100">
             <div className="card-body">
-                <h5 className="card-title">Fråga 1</h5>
-                <p className="card-text">{this.props.data.question}</p>
-                <div style={{
-                    textAlign: 'left',
-                    display:'flex',
-                    marginLeft: '40%',
-                    justifyContent: 'center',
-                    flexDirection: 'column', 
-                    alignItems:'justify'}}>
+                <h5 className="card-title text-center">Fråga {this.props.name + 1}</h5>
+                <p className="card-text text-center">{this.props.data.question}</p>
+                <div 
+                    className="d-flex flex-column ml-5"
+                // style={{
+                //     textAlign: 'left',
+                //     display:'flex',
+                //     marginLeft: '40%',
+                //     justifyContent: 'center',
+                //     flexDirection: 'column', 
+                //     alignItems:'justify'}}
+                    >
                     {answers}
                 </div>
             </div>
