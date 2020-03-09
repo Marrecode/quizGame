@@ -42,9 +42,9 @@ class FrontPage extends Component {
                 <div className="container">
                     <div className="card-group d-flex flex-column flex-md-row">
                         {newArr}
-                    <Link to={'./../forms/questionForm/AddQuestionsForm.js'} className="btn btn-success mt-md-3 mx-2 w-100">Create Quiz</Link>
+                    <Link to={'/AddQuestionsForm'} className="btn btn-success mt-md-3 mx-2 w-100">Create Quiz</Link>
                     </div>
-                    <Link to={'./../forms/AddTitle.js'} className="btn btn-success mt-3">Create Quiz</Link>
+                    <Link to={'/AddTitle'} className="btn btn-success mt-3">Create Quiz</Link>
                 </div>
 
             </div>
