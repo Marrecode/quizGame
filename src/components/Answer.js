@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Answer = props => {
+const Answer = (props) => {
     return(
         <div>
             <label className="radio-inline">
