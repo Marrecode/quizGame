@@ -1,11 +1,10 @@
 import React, {Component} from 'react'
 import { db } from '../../modules/firebase'
 import QuizList from './QuizList'
-import AddQuiz from './AddQuiz'
 import { Link } from 'react-router-dom'
 import Navbar from './Navbar'
-import AddQuizForm from './form/AddQuizForm'
-import AddTitle from './AddTitle'
+import AddQuestionsForm from './../forms/questionForm/AddQuestionsForm'
+import AddTitle from './../forms/AddTitle'
 
 
 class FrontPage extends Component {
@@ -43,9 +42,9 @@ class FrontPage extends Component {
                 <div className="container">
                     <div className="card-group d-flex flex-column flex-md-row">
                         {newArr}
-                    <Link to={'/AddQuizForm'} className="btn btn-success mt-md-3 mx-2 w-100">Create Quiz</Link>
+                    <Link to={'./../forms/questionForm/AddQuestionsForm.js'} className="btn btn-success mt-md-3 mx-2 w-100">Create Quiz</Link>
                     </div>
-                    <Link to={'./AddTitle'} className="btn btn-success mt-3">Create Quiz</Link>
+                    <Link to={'./../forms/AddTitle.js'} className="btn btn-success mt-3">Create Quiz</Link>
                 </div>
 
             </div>

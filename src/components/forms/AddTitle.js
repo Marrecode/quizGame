@@ -1,11 +1,7 @@
 import React  from 'react';
 import { Link } from 'react-router-dom'
-<<<<<<< HEAD:src/components/AddTitle.js
-import { db } from '../modules/firebase';
-import AddQuizForm from './form/AddQuizForm';
-=======
 import { db } from '../../modules/firebase';
->>>>>>> master:src/components/forms/AddTitle.js
+import AddQuestionsForm from './questionForm/AddQuestionsForm'
 
 class AddTitle extends React.Component{
     state = {
@@ -75,7 +71,7 @@ class AddTitle extends React.Component{
         </form>
 
         {	this.state.isSubmitted
-						? <AddQuizForm data={this.state} />
+						? <AddQuestionsForm data={this.state} />
 						: ""
 				}
         
