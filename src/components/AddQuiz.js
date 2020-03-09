@@ -9,6 +9,8 @@ class AddQuiz extends React.Component{
         correct: '',
         question: [],
         steps: [''],
+        idDOC: null,
+        quizLists: [],
     }
 
     handleAddStepClick = e => {
@@ -32,18 +34,41 @@ class AddQuiz extends React.Component{
 
     handleForm = (e) => {
         e.preventDefault();
-
+        
         console.log('want to add', this.state);
         const Create = {
             title: this.state.title,
+            quizLists: [],
         }
 
-        db.collection("quiz").add( Create ).then(res => {
+        db.collection("quiz").add( Create ).then(doc => {
+            this.setState({
+                idDOC: doc.id
+            })
 			console.log("My title is: ", this.state.title)
 		}).catch(err => {
-			console.error(err)
-		})
-	}
+            console.error(err)
+            
+            
+        })
+        
+        db.collection('quiz').doc(this.state.idDOC).get()
+        .then((snapshot) => {
+
+			const quizList = {
+				question: this.state.question,
+				correct: this.state.correct,
+				
+            }
+            snapshot.data().quizLists.push(quizList);
+
+
+            db.collection('quiz').doc(this.state.idDOC).set({
+                quizLists: [quizList],
+            })
+        
+    })
+}
 
     handleInputChange = (e) => {
         console.log('something changed...', e.target.value);
@@ -95,25 +120,10 @@ class AddQuiz extends React.Component{
                     <button className="btn btn-outline-secondary" type="button" id="buttonAdd"></button>
                 </div>
             </div>
-            
-            <div className="input-group mt-4">
-                <label htmlFor="Answer" className="question"></label>
-                <input
-                    type="text"
-                    id="question"
-                    aria-label="your answer"
-                    placeholder="your answer"
-                    className="form-control"
-                    onChange={this.handleInputChange}
-					value={this.state.answer}
-                />
-                <div className="input-group-append">
-                    <button className="btn btn-outline-secondary" type="button" id="buttonAdd"></button>
-                </div>
-            </div>
+
             {
             this.state.steps.map((step, i) => (
-            <div className="input-group mt-4">
+            <div key={i} className="input-group mt-4">
                 <label htmlFor="Answer" className="buttonAdd"></label>
                 <input
 					type="text"
