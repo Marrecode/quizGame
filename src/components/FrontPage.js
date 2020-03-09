@@ -43,7 +43,7 @@ class FrontPage extends Component {
                     <div className="card-group">
                         {newArr}
                     </div>
-                    <Link to="./form/AddQuizForm.js" className="btn btn-success mt-3">Create Quiz</Link>
+                    <Link to={'/AddQuizForm'} className="btn btn-success mt-3">Create Quiz</Link>
                 </div>
 
             </div>

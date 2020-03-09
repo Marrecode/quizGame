@@ -58,7 +58,7 @@ class Card extends React.Component {
     // FIXA SÅ ATT MAN KAN FÅ OLIKA POÄNG BEROENDE PÅ HUR MÅNGA RÄTT MAN FÅR I MULTIPLE!!!
 
     
-    render = () => {
+    render() {
 
     let i = 0
     const type = this.props.data.type

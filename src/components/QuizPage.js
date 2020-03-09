@@ -45,34 +45,33 @@ class QuizPage extends React.Component {
         }, 0)
     }
 
- render() { 
+    render() { 
 
-    let i = 0
-    const card = this.state.quiz
-    ? this.state.quiz.questions.map(info => <Card onChange={this.handlePoints} data={info} name={i++} type={info.type} key={i++}/>)
-    : <h1 style={{color: '#fff'}}>Loading...</h1>
-     return (
-    <div className="container">
-        <form onSubmit={this.handleSubmit}>
-            <h1>{this.state.quiz
-                    ? (this.state.quiz.title)
-                    : ''
+        let i = 0
+        const card = this.state.quiz
+        ? this.state.quiz.questions.map(info => <Card onChange={this.handlePoints} data={info} name={i++} type={info.type} key={i++}/>)
+        : <h1 style={{color: '#fff'}}>Loading...</h1>
+        return (
+        <div className="container">
+            <form onSubmit={this.handleSubmit}>
+                <h1>{this.state.quiz
+                        ? (this.state.quiz.title)
+                        : ''
+                        }
+                </h1>
+                <div className="form-group">
+                    {card}
+
+                    {this.state.sumPoints >= 0
+                        ? (<p className="text-white">You have {this.state.sumPoints} points out of {this.getHowManyPointsTotal()}!</p>)
+                        : ''
                     }
-            </h1>
-            <div className="form-group">
-                {card}
 
-                {this.state.sumPoints >= 0
-                    ? (<p className="text-white">You have {this.state.sumPoints} points out of {this.getHowManyPointsTotal()}!</p>)
-                    : ''
-                }
-
-                <button className="btn btn-success" type="submit">Send Answers</button>
-            </div>
-        </form>
-    </div>
-)}
-   
+                    <button className="btn btn-success" type="submit">Send Answers</button>
+                </div>
+            </form>
+        </div>
+    )}
 }
 
 export default QuizPage
