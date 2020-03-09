@@ -5,6 +5,8 @@ import FrontPage from './components/FrontPage'
 import AddQuiz from './components/AddQuiz'
 import AddQuizForm from './components/form/AddQuizForm'
 import Navbar from './components/Navbar'
+import AddTitle from './components/AddTitle'
+
 
 
 const App = () => {
@@ -16,8 +18,9 @@ const App = () => {
 				<Navbar />
 				<Switch>
 					<Route exact path='/' component={FrontPage} />
-					<Route exact path='/AddQuizForm' component={AddQuizForm} />
+					<Route exact path='/AddTitle' component={AddTitle} />
 					<Route path='/quiz/:quiz_id' component={QuizPage} />
+					<Route path='/AddTitle/AddQuizForm' component={AddQuizForm} />
 					
 					{/* <Route component={NotFound} /> */}
 					

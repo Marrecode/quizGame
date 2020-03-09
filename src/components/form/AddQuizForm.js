@@ -74,6 +74,7 @@ export class AddQuizForm extends Component {
                 <AddQuestions question={this.state.questions} onChange={this.handleInputTitleChange}  />
                 <AddAnswers answer={this.state.questions[0].answers} onChange={this.handleInputAnswer}/>
                 <AddCorrectAnswer correct={this.state.correct} onChange={this.handleInputTitleChange}/>
+                <button type="submit" className="btn btn-primary mt-3">Submit</button>
             </form>
             <div>
                 <h1>Create your Quiz</h1>
@@ -81,6 +82,7 @@ export class AddQuizForm extends Component {
                 <div className="btn-home">
                     <Link to="/" className="btn btn-danger mt-3">Home</Link>
                 </div>
+                
             </div>
         </div>
         )
