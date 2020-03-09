@@ -4,18 +4,14 @@ const AddType = (props) => {
     return (
         <div className="input-group mt-4">
             <div className="btn-group">
-                <button 
-                    type="button"
-                    value={props.type}
-                    className="btn btn-danger dropdown-toggle" 
-                    data-toggle="dropdown" aria-haspopup="true" 
-                    aria-expanded="false">
-                    Choose question type
-                </button>
-            <div className="dropdown-menu">
-                <a className="dropdown-item" href="#">Multiple</a>
-                <a className="dropdown-item" href="#">Single</a>
+            <h3>Choose if question has single or multiple answer options</h3>
+            <div style={{paddingLeft: '1.3rem', paddingTop: '0.4rem'}}>
+            <select className="dropdown" >
+                <option className="dropdown-item" href="#">Multiple</option>
+                <option className="dropdown-item" href="#">Single</option>
+            </select>
             </div>
+            
         </div>
     </div>
     )

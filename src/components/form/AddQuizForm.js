@@ -46,6 +46,11 @@ export class AddQuizForm extends Component {
     render() {
         return(           
         <>
+            <h1>Create your Quiz</h1>
+            <div className="btn-home">
+                <Link to="/" className="btn btn-danger mt-3">Home</Link>
+            </div>
+            
             <form onSubmit={this.handleForm}>
                 <AddTitle title={this.state.title} onChange={this.handleInputTitleChange}/>
                 <AddType type={this.state.type} onChange={this.handleInputTitleChange} />
