@@ -53,15 +53,7 @@ class AddQuizForm extends Component {
             [e.target.id]: e.target.value,
         })
     }
-<<<<<<< HEAD:src/components/form/AddQuizForm.js
-
-
-
     render() {
-
-=======
-    render() {
->>>>>>> master:src/components/forms/questionForm/AddQuestionsForm.js
         return(           
         <div style={{minWidth: '100%'}}>
             

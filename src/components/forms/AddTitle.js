@@ -40,31 +40,7 @@ class AddTitle extends React.Component{
                 <Link to="/" className="btn btn-danger mt-3">Home</Link>
             </div>
 
-            <form onSubmit={this.handleForm}>
-            
-<<<<<<< HEAD:src/components/AddTitle.js
-                <div className="form-group">
-
-                    <div className="input-group mt-4">
-                        <label htmlFor="Title" className="title"></label>
-                        <input
-                            type="text"
-                            id="title"
-                            aria-label="Title of you Quiz"
-                            placeholder="Quiztitle"
-                            className="form-control"
-                            onChange={this.handleInputChange}
-                            value={this.state.title}
-                        />
-                    </div>
-                              
-                </div>
-                {/* <Link to={'./AddQuizForm'} className="btn btn-primary mt-3">Submit</Link> */}
-                <button type="submit">Add title</button>
-            </form>
-=======
-                    
-        </div>    
+            <form onSubmit={this.handleForm}> 
         
         <button type="submit" className="btn btn-primary mt-3">Submit</button>
         </form>
@@ -73,7 +49,6 @@ class AddTitle extends React.Component{
 						? <AddQuizForm data={this.state} />
 						: ""
 				}
->>>>>>> master:src/components/forms/AddTitle.js
         
         </div>
         )
