@@ -1,4 +1,5 @@
 import React from 'react'
+import { db } from '../../modules/firebase'
 
 class AddQuiz extends React.Component {
     state = {
@@ -134,6 +135,21 @@ class AddQuiz extends React.Component {
     handleSubmitQuiz = (e) => {
         e.preventDefault()
         console.log(this.state.questions)
+
+        db.collection('quiz').doc(this.props.match.params.id)
+            .update({
+                title: this.state.title,
+                description: this.state.description,
+                questions: this.state.questions
+
+            })
+            .then(() => {
+                this.props.history.push('/')
+            })
+
+
+
+        //REDIRECT TO HOME PAGE??? OR SHOW THAT IT HAS BEEN SUCCESSFULLY ADDED????
     }
 
     render() {
