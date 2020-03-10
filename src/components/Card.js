@@ -41,13 +41,10 @@ class Card extends React.Component {
         // FIXA SÅ ATT MAN INTE FÅR ALLA RÄTT OM MAN BARA KLICKAR I ALLT GDDDAMMIIITTT
         
         for(let i = 0; i < this.state.multipleCorrectArray.length; i++) {
-            console.log(this.state.multipleCorrectArray)
-            console.log(this.props.data.correct)
             if(this.props.data.correct.includes(this.state.multipleCorrectArray[i])) {
                 points = points + (this.props.data.points/this.props.data.correct.length)
             }
         }
-        console.log(points)
         
         return points
     }
@@ -56,7 +53,7 @@ class Card extends React.Component {
     checkMultiple = () => {
         //Kolla om arrayen stämmer överens med den correcta arrayen, om det gör det, sätt poäng, om inte, sätt poäng till 0
         if(this.state.multipleCorrectArray.length !== this.props.data.correct.length) {
-            return console.log('error')
+            return 0
         } else {
             let sortedStateArray = this.state.multipleCorrectArray
             sortedStateArray.sort()
@@ -73,7 +70,7 @@ class Card extends React.Component {
         }
     }
 
-
+    
     render() {
 
     let i = 0
@@ -87,7 +84,6 @@ class Card extends React.Component {
         answer={q}
         name={this.props.name}
         key={i++} />)
-        
     : this.props.data.answers.map(q => 
         <MultiAnswer
         onChange={this.getPointsMultiple}
