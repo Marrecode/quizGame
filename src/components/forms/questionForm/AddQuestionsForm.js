@@ -74,7 +74,6 @@ class AddQuizForm extends Component {
 
  
     render() {
-
         return(           
         <div style={{minWidth: '100%'}}>
             
