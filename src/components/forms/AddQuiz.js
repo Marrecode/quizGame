@@ -1,25 +1,16 @@
 import React from 'react'
+import { db } from '../../modules/firebase'
 
 class AddQuiz extends React.Component {
     state = {
         title: '',
         description:'',
-        // questions: [
-        //     {
-        //         question:'',
-        //         answers: [""],
-        //         correct: '',
-        //         points: null,
-        //         type: null
-        //     }
-        // ],
-
         temp: [
             {
                 question:'',
                 answers: [""],
                 correct:[],
-                points: null,
+                points: '',
                 type: null
             }
         ]
@@ -31,37 +22,40 @@ class AddQuiz extends React.Component {
             [e.target.id]: e.target.value
         })
     }
-
+    
     handleAddQuestion = (e) => {
         e.preventDefault();
-        let questions
-        if(!this.state.questions) {
-            questions = []
-            questions.push(...this.state.temp)
-        } else {
-            questions = this.state.questions
-            questions.push(...this.state.temp)
-        }
-
-        this.setState({
-            questions,
-            temp: [
-                {
-                    question:'',
-                    answers: [""],
-                    correct:'',
-                    points: null,
-                    type: null
-                }
-            ]
-        }, () => console.log(this.state))
+        // if((this.state.temp[0].correct.length - 1) > 0) {
+            let questions
+            if(!this.state.questions) {
+                questions = []
+                questions.push(...this.state.temp)
+            } else {
+                questions = this.state.questions
+                questions.push(...this.state.temp)
+            }
+    
+            this.setState({
+                questions,
+                temp: [
+                    {
+                        question:'',
+                        answers: [""],
+                        correct: [],
+                        points: '',
+                        type: null
+                    }
+                ]
+            })
+        // }
     }
 
     handleAddAnswer = (e) => {
         e.preventDefault()
         const temp = [...this.state.temp]
-        const newAnswer = temp[this.state.temp.length - 1].answers
-        newAnswer.push("")
+        temp[0].answers.push("")
+        // const newAnswer = temp[this.state.temp.length - 1].answers
+        // newAnswer.push("")
 
         this.setState({
             temp
@@ -80,34 +74,82 @@ class AddQuiz extends React.Component {
     }
     
     handleInputAnswersChange = (e, i) => {
-        const answers = this.state.temp[this.state.temp.length - 1].answers;
+        // const answers = this.state.temp[this.state.temp.length - 1].answers;
+        const answers = this.state.temp[0].answers
         answers[i] = e.target.value;
 
-        console.log(this.state)
         let temp = this.state.temp
 
 		this.setState({
 			temp
 		});
     }
-    
 
-    handleAddCorrect = (e, answer) => {
-        if(e.target.checked) {
-            //Lägg till i state
-
-            const temp = [...this.state.temp]
-            temp[0].correct.push(answer)
-
-            this.setState({
-                temp
-            },() => console.log(this.state.temp))
-
+    checkType = (temp) => {
+        if((temp[0].correct.length - 1) > 0) {
+            return 'multiple'
         } else {
-            // ta bort från state om den är satt
+            return 'single'
         }
     }
 
+    handleAddPoints = (e) => {
+        // e.target.value.replace(/\D/,'')
+        const temp = this.state.temp;
+        temp[0].points = e.target.value;
+        this.setState({
+            temp
+        },() => console.log(this.state.temp[0].points));
+    }
+
+
+    handleAddCorrect = (e, answer) => {
+        //TÖMMA CHECKBOXES NÄR MAN SKAPAR NY FRÅGA
+
+        if(e.target.checked && answer) {
+            const temp = [...this.state.temp]
+            temp[0].correct.push(answer)
+
+            temp[0].type = this.checkType(temp)
+
+            this.setState({
+                temp
+            },() => console.log('added', this.state.temp))
+
+        } else if(!e.target.checked) {
+
+            let temp = [...this.state.temp]
+            let filtered;
+
+            console.log(this.state.temp[0].correct)
+            if(temp[0].correct.includes(answer)) {
+                filtered = temp[0].correct.filter(r => r !== answer)
+                temp[0].correct = filtered
+            }
+
+            this.setState({
+                temp
+            }, () => console.log('removed',this.state.temp))
+        }
+    }
+
+
+    handleSubmitQuiz = (e) => {
+        e.preventDefault()
+        console.log(this.state.questions)
+
+        db.collection('quiz').doc(this.props.match.params.id)
+            .update({
+                title: this.state.title,
+                description: this.state.description,
+                questions: this.state.questions
+
+            })
+            .then(() => {
+                this.props.history.push('/')
+            })
+            .catch(err => console.error(err))
+    }
 
     render() {
         
@@ -157,13 +199,32 @@ class AddQuiz extends React.Component {
     							</div>
     						))
     					}
+<<<<<<< HEAD
                         <h2>{this.state.question}</h2>
+=======
+
+                        <div style={{paddingTop: '2rem'}}>
+                            <label style={{color: '#fff'}}>Add ponts</label>
+
+                            <input value={this.state.temp[0].points} onChange={this.handleAddPoints}/>
+
+
+                            {/* <input type='number'
+                            className='form-control'
+                            onChange={this.handleAddPoints} 
+                            aria-label={'add how many points your question is worth'}
+                            placeholder={'enter points'}
+                            value={this.state.temp[0].points}
+                            /> */}
+                        </div>
+    
+>>>>>>> master
     					<div className="mt-3">
     						<button className="btn btn-primary" onClick={this.handleAddQuestion}><span className="fas fa-plus-square"></span> Add question</button>
     					</div>
     				</div>
     
-                        <button className="btn btn-success">Submit Quiz</button>
+                        <button onClick={this.handleSubmitQuiz} className="btn btn-success">Submit Quiz</button>
                 </form>
 
                 <div className="displaying-quizes text-center text-white">
