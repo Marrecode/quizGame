@@ -139,7 +139,7 @@ class AddQuiz extends React.Component {
     							</div>
     						))
     					}
-    
+                        <h2>{this.state.question}</h2>
     					<div className="mt-3">
     						<button className="btn btn-primary" onClick={this.handleAddQuestion}><span className="fas fa-plus-square"></span> Add question</button>
     					</div>
