@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import { db } from '../../modules/firebase'
 import QuizList from './QuizList'
-// import AddQuiz from './AddQuiz'
 import { Link } from 'react-router-dom'
 import Navbar from '../page/Navbar'
 import AddQuestionsForm from '../forms/questionForm/AddQuestionsForm'
@@ -30,6 +29,20 @@ class FrontPage extends Component {
         })
     }
 
+    makeNewQuiz = () => {
+        db.collection("quiz").add({
+            title: '',
+            questions: [],
+            description: ''
+        })
+            .then(doc => {
+                this.props.history.push('/makequiz/' + doc.id)   
+            })
+            .catch(err => {
+                console.error(err)
+            })
+    }
+
     render() {
 
         const newArr = this.state.quiz.map(quiz => {
@@ -45,7 +58,8 @@ class FrontPage extends Component {
                         {newArr}
                     {/* <Link to={'/AddQuizForm'} className="btn btn-success mt-md-3 mx-2 w-100">Create Quiz</Link> */}
                     </div>
-                    <Link to={'./AddTitle'} className="btn btn-success mt-3 w-100">Create Quiz</Link>
+                    {/* <Link to={'./AddTitle'} className="btn btn-success mt-3 w-100">Create Quiz</Link> */}
+                    <Link onClick={this.makeNewQuiz} className="btn btn-success mt-3 w-100">Create Quiz</Link>
                 </div>
 
             </div>

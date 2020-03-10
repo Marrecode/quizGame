@@ -11,7 +11,7 @@ class Card extends React.Component {
     }
 
     getPointsSingle = (e) => {
-        if(e.target.value === this.props.data.correct) {
+        if(e.target.value === this.props.data.correct[0]) {
             this.props.onChange(this.props.data.points, this.props.name)
         } else {
             this.props.onChange(0, this.props.name)

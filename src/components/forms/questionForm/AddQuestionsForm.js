@@ -15,7 +15,7 @@ class AddQuizForm extends Component {
     handleTypeSelect = (e) => {
         e.preventDefault()
 
-        const questions = this.state.questions
+        const questions = this.state.question
         questions[0].type = e.target.value
 
         this.setState({

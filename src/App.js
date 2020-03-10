@@ -6,6 +6,7 @@ import FrontPage from './components/page/FrontPage'
 import AddQuestionsForm from './components/forms/questionForm/AddQuestionsForm'
 import Navbar from './components/page/Navbar'
 import AddTitle from './components/forms/AddTitle'
+import AddQuiz from './components/forms/AddQuiz'
 
 
 
@@ -18,10 +19,11 @@ const App = () => {
 				<Navbar />
 				<Switch>
 					<Route exact path='/' component={FrontPage} />
-					<Route exact path='/AddTitle' component={AddTitle} />
+					<Route exact path='/forms/AddTitle' component={AddTitle} />
 					<Route path='/quiz/:quiz_id' component={QuizPage} />
 					{/* <Route path='/AddTitle/AddQuestionsForm' component={AddQuestionsForm} /> */}
 					<Route path='/addquiz/:id' component={AddQuestionsForm} />
+					<Route path='/makequiz/:id' component={AddQuiz} />
 					
 					{/* <Route component={NotFound} /> */}
 					
