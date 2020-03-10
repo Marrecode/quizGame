@@ -62,7 +62,7 @@ class AddQuizForm extends Component {
             
             <form onSubmit={this.handleForm} >
                 <AddType type={this.state.type} onChange={this.handleTypeSelect} />
-                <AddQuestions question={this.state.questions} onChange={this.handleInputTitleChange}  />
+                <AddQuestions question={this.state.question} onChange={this.handleInputTitleChange}  />
                 <AddAnswers answer={this.state.answers} onChange={this.handleInputAnswer}/>
                 <AddCorrectAnswer correct={this.state.correct} onChange={this.handleInputTitleChange}/>
                 <button type="submit" className="btn btn-primary mt-3">Submit</button>

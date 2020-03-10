@@ -10,7 +10,8 @@ const AddQuestions = (props) => {
                     aria-label="Type in your question"
                     placeholder="add your question:"
                     className="form-control"
-                    onChange={props.handleInputTitleChange}
+                    onChange={props.onChange}
+                    value={props.question}
                 />
             </div>
     )
