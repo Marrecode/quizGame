@@ -6,6 +6,7 @@ import AddQuestionsForm from '../forms/questionForm/AddQuestionsForm'
 class AddTitle extends React.Component{
     state = {
         title: '',
+        description: '',
         isSubmitted: false,
     }
 
@@ -14,11 +15,13 @@ class AddTitle extends React.Component{
         e.preventDefault();
         
         const Create = {
-            title: this.state.title
+            title: this.state.title,
+            description: this.state.description
         }
 
         db.collection("quiz").add( Create ).then(() => {
-			console.log("My title is: ", this.state.title)
+            console.log("My title is: ", this.state.title)
+            console.log('this is my description', this.state.description)
 		}).catch(err => {
             console.error(err)
         })
@@ -59,9 +62,21 @@ class AddTitle extends React.Component{
                 />
             </div>
 
+            <div className="input-group mt-4">
+                <label htmlFor="Title" className="title"></label>
+                <input
+                    type="text"
+                    id="description"
+                    aria-label="Title of you Quiz"
+                    placeholder="Quiz Description"
+                    className="form-control"
+                    onChange={this.handleInputChange}
+					value={this.state.description}
+                />
+            </div>
 
         </div>    
-        <button> className="btn btn-primary mt-3">Submit</button> 
+        <button className="btn btn-primary mt-3">Submit</button> 
         </form>
 
         {	this.state.isSubmitted
