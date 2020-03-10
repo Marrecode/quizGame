@@ -1,26 +1,17 @@
 import React from 'react'
+import { db } from '../../modules/firebase'
 
 class AddQuiz extends React.Component {
     state = {
         title: '',
         description:'',
-        // questions: [
-        //     {
-        //         question:'',
-        //         answers: [""],
-        //         correct: '',
-        //         points: null,
-        //         type: null
-        //     }
-        // ],
-
         temp: [
             {
                 question:'',
                 answers: [""],
                 correct:[],
-                points: 0,
-                type: null,
+                points: '',
+                type: null
             }
         ],
         checked: false
@@ -33,37 +24,40 @@ class AddQuiz extends React.Component {
             [e.target.id]: e.target.value
         })
     }
-
+    
     handleAddQuestion = (e) => {
         e.preventDefault();
-        let questions
-        if(!this.state.questions) {
-            questions = []
-            questions.push(...this.state.temp)
-        } else {
-            questions = this.state.questions
-            questions.push(...this.state.temp)
-        }
-
-        this.setState({
-            questions,
-            temp: [
-                {
-                    question:'',
-                    answers: [""],
-                    correct: [],
-                    points: 0,
-                    type: null
-                }
-            ]
-        })
+        // if((this.state.temp[0].correct.length - 1) > 0) {
+            let questions
+            if(!this.state.questions) {
+                questions = []
+                questions.push(...this.state.temp)
+            } else {
+                questions = this.state.questions
+                questions.push(...this.state.temp)
+            }
+    
+            this.setState({
+                questions,
+                temp: [
+                    {
+                        question:'',
+                        answers: [""],
+                        correct: [],
+                        points: '',
+                        type: null
+                    }
+                ]
+            })
+        // }
     }
 
     handleAddAnswer = (e) => {
         e.preventDefault()
         const temp = [...this.state.temp]
-        const newAnswer = temp[this.state.temp.length - 1].answers
-        newAnswer.push("")
+        temp[0].answers.push("")
+        // const newAnswer = temp[this.state.temp.length - 1].answers
+        // newAnswer.push("")
 
         this.setState({
             temp
@@ -74,6 +68,8 @@ class AddQuiz extends React.Component {
         e.preventDefault()
         const temp = this.state.temp;
         temp[0].points = Number(e.target.value)
+
+        
 
 		this.setState({
 			temp
@@ -93,10 +89,10 @@ class AddQuiz extends React.Component {
     }
     
     handleInputAnswersChange = (e, i) => {
-        const answers = this.state.temp[this.state.temp.length - 1].answers;
+        // const answers = this.state.temp[this.state.temp.length - 1].answers;
+        const answers = this.state.temp[0].answers
         answers[i] = e.target.value;
 
-        console.log(this.state)
         let temp = this.state.temp
 
 		this.setState({
@@ -112,9 +108,17 @@ class AddQuiz extends React.Component {
         }
     }
 
+    handleAddPoints = (e) => {
+        e.preventDefault()
+        const temp = this.state.temp;
+        temp[0].points = Number(e.target.value);
+        this.setState({
+            temp
+        },() => console.log(typeof this.state.temp[0].points));
+    }
+
     handleAddCorrect = (e, answer) => {
         //TÖMMA CHECKBOXES NÄR MAN SKAPAR NY FRÅGA
-        // KAN INTE SKAPA EN NY FRÅGA OM INTE DET FINNS ETT KORREKT SVARRRRRRRR
 
         if(e.target.checked && answer) {
             const temp = [...this.state.temp]
@@ -146,6 +150,18 @@ class AddQuiz extends React.Component {
     handleSubmitQuiz = (e) => {
         e.preventDefault()
         console.log(this.state.questions)
+
+        db.collection('quiz').doc(this.props.match.params.id)
+            .update({
+                title: this.state.title,
+                description: this.state.description,
+                questions: this.state.questions
+
+            })
+            .then(() => {
+                this.props.history.push('/')
+            })
+            .catch(err => console.error(err))
     }
 
     render() {

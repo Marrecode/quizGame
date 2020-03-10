@@ -50,28 +50,27 @@ class Card extends React.Component {
     }
 
     
-    // Ger endast poäng om man klickat i alla rätta svar...
-    // checkMultiple = () => {
-    //     //Kolla om arrayen stämmer överens med den correcta arrayen, om det gör det, sätt poäng, om inte, sätt poäng till 0
-    //     if(this.state.multipleCorrectArray.length !== this.props.data.correct.length) {
-    //         return 0
-    //     } else {
-    //         let sortedStateArray = this.state.multipleCorrectArray
-    //         sortedStateArray.sort()
+    checkMultiple = () => {
+        //Kolla om arrayen stämmer överens med den correcta arrayen, om det gör det, sätt poäng, om inte, sätt poäng till 0
+        if(this.state.multipleCorrectArray.length !== this.props.data.correct.length) {
+            return console.log('error')
+        } else {
+            let sortedStateArray = this.state.multipleCorrectArray
+            sortedStateArray.sort()
 
-    //         let sortedCorrectArray = this.props.data.correct.sort()
+            let sortedCorrectArray = this.props.data.correct.sort()
 
-    //         for(let i = 0; i < sortedCorrectArray.length; i++) {
-    //             if(sortedCorrectArray[i] !== sortedStateArray[i]) {
-    //                 return 0
-    //             } else {
-    //                 return this.props.data.points
-    //             }
-    //         }
-    //     }
-    // }
+            for(let i = 0; i < sortedCorrectArray.length; i++) {
+                if(sortedCorrectArray[i] !== sortedStateArray[i]) {
+                    return 0
+                } else {
+                    return this.props.data.points
+                }
+            }
+        }
+    }
 
-    
+
     render() {
 
     let i = 0
@@ -85,6 +84,7 @@ class Card extends React.Component {
         answer={q}
         name={this.props.name}
         key={i++} />)
+        
     : this.props.data.answers.map(q => 
         <MultiAnswer
         onChange={this.getPointsMultiple}
