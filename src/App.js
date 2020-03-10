@@ -20,7 +20,8 @@ const App = () => {
 					<Route exact path='/' component={FrontPage} />
 					<Route exact path='/forms/AddTitle' component={AddTitle} />
 					<Route path='/quiz/:quiz_id' component={QuizPage} />
-					<Route path='/AddTitle/AddQuestionsForm' component={AddQuestionsForm} />
+					{/* <Route path='/AddTitle/AddQuestionsForm' component={AddQuestionsForm} /> */}
+					<Route path='/addquiz/:id' component={AddQuestionsForm} />
 					
 					{/* <Route component={NotFound} /> */}
 					

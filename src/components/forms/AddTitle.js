@@ -7,6 +7,7 @@ class AddTitle extends React.Component{
     state = {
         title: '',
         description: '',
+        id: null,
         isSubmitted: false,
     }
 
@@ -14,23 +15,27 @@ class AddTitle extends React.Component{
     handleForm = (e) => {
         e.preventDefault();
         
-        const Create = {
+        const create = {
             title: this.state.title,
-            description: this.state.description
+            questions: []
         }
 
-        db.collection("quiz").add( Create ).then(() => {
+        db.collection("quiz").add( create ).then(doc=> {
             console.log("My title is: ", this.state.title)
-            console.log('this is my description', this.state.description)
+            this.setState({
+                id: doc.id
+            },() => this.props.history.push('/addquiz/' + this.state.id))
 		}).catch(err => {
             console.error(err)
         })
+
         this.setState({
 			isSubmitted: true,
 		})
 }
 
     handleInputChange = (e) => {
+        console.log(e.target.value)
         this.setState({
             [e.target.id]: e.target.value,
         })
@@ -46,12 +51,7 @@ class AddTitle extends React.Component{
 
             <form onSubmit={this.handleForm}>
 
-        <div className="form-group">
-
-
-            <div className="input-group mt-4">
-                <label htmlFor="Title" className="title"></label>
-                <input
+            <input
                     type="text"
                     id="title"
                     aria-label="Title of you Quiz"
@@ -60,29 +60,15 @@ class AddTitle extends React.Component{
                     onChange={this.handleInputChange}
 					value={this.state.title}
                 />
-            </div>
-
-            <div className="input-group mt-4">
-                <label htmlFor="Title" className="title"></label>
-                <input
-                    type="text"
-                    id="description"
-                    aria-label="Title of you Quiz"
-                    placeholder="Quiz Description"
-                    className="form-control"
-                    onChange={this.handleInputChange}
-					value={this.state.description}
-                />
-            </div>
-
-        </div>    
-        <button className="btn btn-primary mt-3">Submit</button> 
+        
+        {/* <button type="submit" className="btn btn-primary mt-3">Submit</button> */}
+        <Link onClick={this.handleForm} to={'./addquiz/' + this.state.id}>Submit</Link>
         </form>
 
-        {	this.state.isSubmitted
-						? <AddQuestionsForm data={this.state} />
-						: ""
-				}
+        {/* {	this.state.isSubmitted
+					? <AddQuestionsForm data={this.state} />
+					: ""
+				} */}
         
         </div>
         )
