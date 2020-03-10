@@ -4,21 +4,21 @@ class AddQuiz extends React.Component {
     state = {
         title: '',
         description:'',
-        questions: [
-            // {
-            //     question:'',
-            //     answers: [""],
-            //     correct: '',
-            //     points: null,
-            //     type: null
-            // }
-        ],
+        // questions: [
+        //     {
+        //         question:'',
+        //         answers: [""],
+        //         correct: '',
+        //         points: null,
+        //         type: null
+        //     }
+        // ],
 
         temp: [
             {
                 question:'',
                 answers: [""],
-                correct:'',
+                correct:[],
                 points: null,
                 type: null
             }
@@ -34,8 +34,14 @@ class AddQuiz extends React.Component {
 
     handleAddQuestion = (e) => {
         e.preventDefault();
-        const questions = this.state.questions
-        questions.push(...this.state.temp)
+        let questions
+        if(!this.state.questions) {
+            questions = []
+            questions.push(...this.state.temp)
+        } else {
+            questions = this.state.questions
+            questions.push(...this.state.temp)
+        }
 
         this.setState({
             questions,
@@ -86,16 +92,26 @@ class AddQuiz extends React.Component {
     }
     
 
-    handleAddCorrect = (answer) => {
-        // KOLLA SÅ ATT DET ÄR CHECKAT!!!!
-        console.log(answer)
-        console.log(this.state.questions)
+    handleAddCorrect = (e, answer) => {
+        if(e.target.checked) {
+            //Lägg till i state
+
+            const temp = [...this.state.temp]
+            temp[0].correct.push(answer)
+
+            this.setState({
+                temp
+            },() => console.log(this.state.temp))
+
+        } else {
+            // ta bort från state om den är satt
+        }
     }
 
 
     render() {
         return(
-            <div>
+            <div className="container">
                 <form className="container">
                     <input onChange={this.handleInputChange} id="title" className="form-control" type="text" placeholder="Enter the title of your quiz" />
                     <input onChange={this.handleInputChange} id="description" className="form-control" type="text" placeholder="Enter a description of your quiz" />
@@ -127,7 +143,7 @@ class AddQuiz extends React.Component {
     								/>
                                     <div className="input-group-append">
                                     <div class="input-group-text">
-                                        <input onChange={() => {this.handleAddCorrect(answer)}} type="checkbox" value={answer}/>
+                                        <input onChange={e => {this.handleAddCorrect(e, answer)}} type="checkbox" value={answer}/>
                                     </div>
                                         <button className="btn btn-success" onClick={this.handleAddAnswer}>Add answer</button>
                                     </div>
@@ -145,22 +161,28 @@ class AddQuiz extends React.Component {
     					</div>
     				</div>
     
-    
+                        <button className="btn btn-success">Submit Quiz</button>
                 </form>
 
-                {this.state.questions
-                    ? (<div>
-                        {this.state.questions.map(q => (
-                            <div>
-                                <p>{q.question}</p>
-                                <ul>{q.answers.map(a => (
-                                    <li>{a}</li>
-                                ))}</ul>
-                            </div>
-                        ))}
-                    </div>)
-                    : ''
-                }
+                <div className="displaying-quizes text-center text-white">
+                    <h1>{this.state.title}</h1>
+                    <p>{this.state.description}</p>
+    
+                    {this.state.questions
+                        ? (<div>
+                            <h2>And these are my questions</h2>
+                            {this.state.questions.map(q => (
+                                <div>
+                                    <p>{q.question}</p>
+                                    <ul>{q.answers.map(a => (
+                                        <li>{a}</li>
+                                    ))}</ul>
+                                </div>
+                            ))}
+                        </div>)
+                        : ''
+                    }
+                </div>
             </div>
 
             
