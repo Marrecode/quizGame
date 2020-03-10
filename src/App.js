@@ -19,7 +19,7 @@ const App = () => {
 				<Navbar />
 				<Switch>
 					<Route exact path='/' component={FrontPage} />
-					<Route exact path='/AddTitle' component={AddTitle} />
+					<Route exact path='/forms/AddTitle' component={AddTitle} />
 					<Route path='/quiz/:quiz_id' component={QuizPage} />
 					{/* <Route path='/AddTitle/AddQuestionsForm' component={AddQuestionsForm} /> */}
 					<Route path='/addquiz/:id' component={AddQuestionsForm} />

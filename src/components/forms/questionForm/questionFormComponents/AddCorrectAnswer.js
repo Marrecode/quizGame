@@ -6,7 +6,7 @@ const AddCorrectAnswer = (props) => {
             <label htmlFor="Answer" className="correct"></label>
                 <input
                 type="text"
-                id="correct"
+                id="answer"
                 aria-label="correct answer"
                 placeholder="enter the correct answer"
                 className="form-control"
