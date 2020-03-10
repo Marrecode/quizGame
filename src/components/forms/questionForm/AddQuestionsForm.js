@@ -54,9 +54,6 @@ class AddQuizForm extends Component {
         })
     }
     render() {
-
-        console.log(this.state)
-        console.log(this.props.match.params.id)
         return(           
         <div style={{minWidth: '100%'}}>
             
