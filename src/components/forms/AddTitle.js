@@ -16,7 +16,12 @@ class AddTitle extends React.Component{
         
         const create = {
             title: this.state.title,
-            questions: []
+            questions: [{
+                answers: [''],
+                question: '',
+                type: '',
+                correct: ['']
+            }]
         }
 
         db.collection("quiz").add( create ).then(doc=> {
