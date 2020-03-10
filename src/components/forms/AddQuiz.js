@@ -94,13 +94,14 @@ class AddQuiz extends React.Component {
     }
 
     handleAddPoints = (e) => {
-        e.preventDefault()
+        // e.target.value.replace(/\D/,'')
         const temp = this.state.temp;
-        temp[0].points = Number(e.target.value);
+        temp[0].points = e.target.value;
         this.setState({
             temp
-        },() => console.log(typeof this.state.temp[0].points));
+        },() => console.log(this.state.temp[0].points));
     }
+
 
     handleAddCorrect = (e, answer) => {
         //TÖMMA CHECKBOXES NÄR MAN SKAPAR NY FRÅGA
@@ -199,13 +200,17 @@ class AddQuiz extends React.Component {
 
                         <div style={{paddingTop: '2rem'}}>
                             <label style={{color: '#fff'}}>Add ponts</label>
-                            <input type='number'
+
+                            <input value={this.state.temp[0].points} onChange={this.handleAddPoints}/>
+
+
+                            {/* <input type='number'
                             className='form-control'
                             onChange={this.handleAddPoints} 
                             aria-label={'add how many points your question is worth'}
                             placeholder={'enter points'}
                             value={this.state.temp[0].points}
-                            />
+                            /> */}
                         </div>
     
     					<div className="mt-3">

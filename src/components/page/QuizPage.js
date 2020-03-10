@@ -67,7 +67,7 @@ class QuizPage extends React.Component {
                     {card}
 
                     {this.state.sumPoints >= 0
-                        ? (<p className="text-white text-center points-text my-4">You got {Math.round(this.state.sumPoints * 10) / 10} points out of {this.getHowManyPointsTotal()}!</p>)
+                        ? (<p className="text-white text-center points-text my-4">You got {Math.round(this.state.sumPoints * 10) / 10} points out of {Number(this.getHowManyPointsTotal())}!</p>)
                         : ''
                     }
 

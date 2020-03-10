@@ -41,10 +41,13 @@ class Card extends React.Component {
         // FIXA SÅ ATT MAN INTE FÅR ALLA RÄTT OM MAN BARA KLICKAR I ALLT GDDDAMMIIITTT
         
         for(let i = 0; i < this.state.multipleCorrectArray.length; i++) {
+            console.log(this.state.multipleCorrectArray)
+            console.log(this.props.data.correct)
             if(this.props.data.correct.includes(this.state.multipleCorrectArray[i])) {
                 points = points + (this.props.data.points/this.props.data.correct.length)
             }
         }
+        console.log(points)
         
         return points
     }
