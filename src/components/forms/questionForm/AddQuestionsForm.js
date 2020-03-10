@@ -33,6 +33,24 @@ class AddQuizForm extends Component {
         
     }
 
+    handleAddAnswers = e => {
+        const answers = this.state.answers;
+        answers.push("");
+
+        this.setState({
+            answers
+        });
+    }
+
+    handleInputAnswerChange = (e, i) => {
+        const answers = this.state.answers;
+        answers[i] = e.target.value;
+
+        this.setState({
+            answers,
+        });
+    }
+
     handleForm = (e) => {
         e.preventDefault()
 
@@ -54,9 +72,6 @@ class AddQuizForm extends Component {
         })
     }
     render() {
-
-        console.log(this.state)
-        console.log(this.props.match.params.id)
         return(           
         <div style={{minWidth: '100%'}}>
             
@@ -64,7 +79,10 @@ class AddQuizForm extends Component {
                 <AddType type={this.state.type} onChange={this.handleTypeSelect} />
                 <AddQuestions question={this.state.question} onChange={this.handleInputTitleChange}  />
                 <AddAnswers answer={this.state.answers} onChange={this.handleInputAnswer}/>
+                <button className="btn btn-primary" onClick={this.handleAddAnswers}>Add Answers</button>
                 <AddCorrectAnswer correct={this.state.correct} onChange={this.handleInputTitleChange}/>
+                
+                <p></p>
                 <button type="submit" className="btn btn-primary mt-3">Submit</button>
             </form>
             <div>
