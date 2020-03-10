@@ -199,9 +199,6 @@ class AddQuiz extends React.Component {
     							</div>
     						))
     					}
-<<<<<<< HEAD
-                        <h2>{this.state.question}</h2>
-=======
 
                         <div style={{paddingTop: '2rem'}}>
                             <label style={{color: '#fff'}}>Add ponts</label>
@@ -218,7 +215,6 @@ class AddQuiz extends React.Component {
                             /> */}
                         </div>
     
->>>>>>> master
     					<div className="mt-3">
     						<button className="btn btn-primary" onClick={this.handleAddQuestion}><span className="fas fa-plus-square"></span> Add question</button>
     					</div>
