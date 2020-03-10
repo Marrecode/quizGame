@@ -46,8 +46,9 @@ class FrontPage extends Component {
     render() {
 
         const newArr = this.state.quiz.map(quiz => {
+            const ql = quiz.title ? <QuizList key={quiz.id} info={quiz} /> : null
             return (
-                <QuizList key={quiz.id} info={quiz} />
+               ql
             )
         })
     

@@ -23,7 +23,7 @@ class QuizPage extends React.Component {
             if(!sum) {
                 sum = 0
             }
-            return sum + points
+            return sum + Number(points)
         }, 0)
         this.setState({
             sumPoints: sumPoints
@@ -41,7 +41,7 @@ class QuizPage extends React.Component {
 
     getHowManyPointsTotal = () => {
         return this.state.quiz.questions.reduce((sum, question) => {
-            return sum + question.points
+            return sum + Number(question.points)
         }, 0)
     }
 
