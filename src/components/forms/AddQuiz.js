@@ -49,12 +49,12 @@ class AddQuiz extends React.Component {
                 {
                     question:'',
                     answers: [""],
-                    correct:'',
+                    correct: [],
                     points: null,
                     type: null
                 }
             ]
-        }, () => console.log(this.state))
+        })
     }
 
     handleAddAnswer = (e) => {
@@ -90,24 +90,51 @@ class AddQuiz extends React.Component {
 			temp
 		});
     }
-    
 
-    handleAddCorrect = (e, answer) => {
-        if(e.target.checked) {
-            //Lägg till i state
-
-            const temp = [...this.state.temp]
-            temp[0].correct.push(answer)
-
-            this.setState({
-                temp
-            },() => console.log(this.state.temp))
-
+    checkType = (temp) => {
+        if((temp[0].correct.length - 1) > 0) {
+            return 'multiple'
         } else {
-            // ta bort från state om den är satt
+            return 'single'
         }
     }
 
+    handleAddCorrect = (e, answer) => {
+        //TÖMMA CHECKBOXES NÄR MAN SKAPAR NY FRÅGA
+        // KAN INTE SKAPA EN NY FRÅGA OM INTE DET FINNS ETT KORREKT SVARRRRRRRR
+
+        if(e.target.checked && answer) {
+            const temp = [...this.state.temp]
+            temp[0].correct.push(answer)
+
+            temp[0].type = this.checkType(temp)
+
+            this.setState({
+                temp
+            },() => console.log('added', this.state.temp))
+
+        } else if(!e.target.checked) {
+
+            let temp = [...this.state.temp]
+            let filtered;
+
+            console.log(this.state.temp[0].correct)
+            if(temp[0].correct.includes(answer)) {
+                filtered = temp[0].correct.filter(r => r !== answer)
+                temp[0].correct = filtered
+            }
+
+            this.setState({
+                temp
+            }, () => console.log('removed',this.state.temp))
+        }
+    }
+
+
+    handleSubmitQuiz = (e) => {
+        e.preventDefault()
+        console.log(this.state.questions)
+    }
 
     render() {
         return(
@@ -161,7 +188,7 @@ class AddQuiz extends React.Component {
     					</div>
     				</div>
     
-                        <button className="btn btn-success">Submit Quiz</button>
+                        <button onClick={this.handleSubmitQuiz} className="btn btn-success">Submit Quiz</button>
                 </form>
 
                 <div className="displaying-quizes text-center text-white">
