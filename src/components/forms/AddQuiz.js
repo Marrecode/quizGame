@@ -22,7 +22,8 @@ class AddQuiz extends React.Component {
                 points: 0,
                 type: null,
             }
-        ]
+        ],
+        checked: false
     }
 
 
@@ -51,7 +52,7 @@ class AddQuiz extends React.Component {
                     question:'',
                     answers: [""],
                     correct: [],
-                    points: null,
+                    points: 0,
                     type: null
                 }
             ]
@@ -69,16 +70,14 @@ class AddQuiz extends React.Component {
         })
     }
 
-    handleAddPoints = (e, i) => {
+    handleAddPoints = (e) => {
         e.preventDefault()
-        console.log(e.target.value)
-        const temp = this.state.temp
-        console.log(temp)
-        let points = temp[i].points
-        console.log(points)
-        points = e.target.value
-        console.log(points)
-        this.setState({points})
+        const temp = this.state.temp;
+        temp[0].points = Number(e.target.value)
+
+		this.setState({
+			temp
+        },() => console.log(this.state));
 
     }
 
@@ -120,14 +119,13 @@ class AddQuiz extends React.Component {
         if(e.target.checked && answer) {
             const temp = [...this.state.temp]
             temp[0].correct.push(answer)
-
             temp[0].type = this.checkType(temp)
-
             this.setState({
                 temp
             },() => console.log('added', this.state.temp))
 
-        } else if(!e.target.checked) {
+        } 
+        else if(!e.target.checked) {
 
             let temp = [...this.state.temp]
             let filtered;
@@ -196,7 +194,9 @@ class AddQuiz extends React.Component {
                                             <input 
                                             onChange={e => {this.handleAddCorrect(e, answer)}} 
                                             type="checkbox" 
-                                            value={answer}/>
+                                            value={answer}
+                                            checked={this.state.checked}
+                                            />
                                         </div>
                                     <button 
                                         className="btn btn-success" 
@@ -211,9 +211,11 @@ class AddQuiz extends React.Component {
     						))
     					}
 
-                        <div className='input-group-append'>
-                            <input type='text' 
-                            onChange={this.addPoints} 
+                        <div style={{paddingTop: '2rem'}}>
+                            <label style={{color: '#fff'}}>Add ponts</label>
+                            <input type='number'
+                            className='form-control'
+                            onChange={this.handleAddPoints} 
                             aria-label={'add how many points your question is worth'}
                             placeholder={'enter points'}
                             value={this.state.temp[0].points}
