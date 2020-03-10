@@ -35,21 +35,25 @@ class Card extends React.Component {
         }
     }
     
-    checkMultiple = () => {
-        let points = 0
+    // checkMultiple = () => {
+    //     let points = 0
 
-        // FIXA SÅ ATT MAN INTE FÅR ALLA RÄTT OM MAN BARA KLICKAR I ALLT GDDDAMMIIITTT
+    //     // FIXA SÅ ATT MAN INTE FÅR ALLA RÄTT OM MAN BARA KLICKAR I ALLT GDDDAMMIIITTT
         
-        for(let i = 0; i < this.state.multipleCorrectArray.length; i++) {
-            if(this.props.data.correct.includes(this.state.multipleCorrectArray[i])) {
-                points = points + (Number(this.props.data.points)/this.props.data.correct.length)
-            }
-        }
+    //     for(let i = 0; i < this.state.multipleCorrectArray.length; i++) {
+    //         console.log(this.state.multipleCorrectArray)
+    //         console.log(this.props.data.correct)
+    //         if(this.props.data.correct.includes(this.state.multipleCorrectArray[i])) {
+    //             points = points + (Number(this.props.data.points)/this.props.data.correct.length)
+    //         }
+    //     }
+    //     console.log(points)
         
-        return points
-    }
+    //     return points
+    // }
 
     
+    // Ger endast poäng om man klickat i alla rätta svar...
     checkMultiple = () => {
         //Kolla om arrayen stämmer överens med den correcta arrayen, om det gör det, sätt poäng, om inte, sätt poäng till 0
         if(this.state.multipleCorrectArray.length !== this.props.data.correct.length) {

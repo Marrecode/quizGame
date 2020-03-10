@@ -13,8 +13,8 @@ class AddQuiz extends React.Component {
                 points: '',
                 type: null
             }
-        ],
-        checked: false
+        ]
+        
     }
 
 
