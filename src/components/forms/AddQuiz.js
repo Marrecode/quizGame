@@ -19,11 +19,12 @@ class AddQuiz extends React.Component {
                 question:'',
                 answers: [""],
                 correct:[],
-                points: null,
-                type: null
+                points: 0,
+                type: null,
             }
         ]
     }
+
 
     handleInputChange = (e) => {
         console.log(e.target.id)
@@ -66,6 +67,19 @@ class AddQuiz extends React.Component {
         this.setState({
             temp
         })
+    }
+
+    handleAddPoints = (e, i) => {
+        e.preventDefault()
+        console.log(e.target.value)
+        const temp = this.state.temp
+        console.log(temp)
+        let points = temp[i].points
+        console.log(points)
+        points = e.target.value
+        console.log(points)
+        this.setState({points})
+
     }
 
 
@@ -113,8 +127,17 @@ class AddQuiz extends React.Component {
         return(
             <div className="container">
                 <form className="container">
-                    <input onChange={this.handleInputChange} id="title" className="form-control" type="text" placeholder="Enter the title of your quiz" />
-                    <input onChange={this.handleInputChange} id="description" className="form-control" type="text" placeholder="Enter a description of your quiz" />
+                    <input onChange={this.handleInputChange} 
+                    id="title" 
+                    className="form-control" type="text" 
+                    placeholder="Enter the title of your quiz" />
+
+                    <input 
+                    onChange={this.handleInputChange} 
+                    id="description" 
+                    className="form-control" 
+                    type="text" 
+                    placeholder="Enter a description of your quiz" />
     
                 <br/>
                     <div className="steps-wrapper mb-4">
@@ -142,22 +165,39 @@ class AddQuiz extends React.Component {
     									value={answer}
     								/>
                                     <div className="input-group-append">
-                                    <div class="input-group-text">
-                                        <input onChange={e => {this.handleAddCorrect(e, answer)}} type="checkbox" value={answer}/>
-                                    </div>
-                                        <button className="btn btn-success" onClick={this.handleAddAnswer}>Add answer</button>
+                                        <div className="input-group-text">
+                                            <input 
+                                            onChange={e => {this.handleAddCorrect(e, answer)}} 
+                                            type="checkbox" 
+                                            value={answer}/>
+                                        </div>
+                                    <button 
+                                        className="btn btn-success" 
+                                        onClick={this.handleAddAnswer}>
+                                        Add answer
+                                    </button>
                                     </div>
                                 </div>
                             ))
                         }
-    
-    
     							</div>
     						))
     					}
+
+                        <div className='input-group-append'>
+                            <input type='text' 
+                            onChange={this.addPoints} 
+                            aria-label={'add how many points your question is worth'}
+                            placeholder={'enter points'}
+                            value={this.state.temp[0].points}
+                            />
+                        </div>
     
     					<div className="mt-3">
-    						<button className="btn btn-primary" onClick={this.handleAddQuestion}><span className="fas fa-plus-square"></span> Add question</button>
+    						<button 
+                            className="btn btn-primary" 
+                            onClick={this.handleAddQuestion}>
+                            <span className="fas fa-plus-square" />Add question</button>
     					</div>
     				</div>
     
@@ -172,7 +212,7 @@ class AddQuiz extends React.Component {
                         ? (<div>
                             <h2>And these are my questions</h2>
                             {this.state.questions.map(q => (
-                                <div>
+                                <div key={q.id}>
                                     <p>{q.question}</p>
                                     <ul>{q.answers.map(a => (
                                         <li>{a}</li>
