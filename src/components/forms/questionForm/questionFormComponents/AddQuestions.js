@@ -6,11 +6,12 @@ const AddQuestions = (props) => {
                 <label htmlFor="Question" className="question"></label>
                 <input
                     type="text"
-                    id="question"
+                    id="questions"
                     aria-label="Type in your question"
                     placeholder="add your question:"
                     className="form-control"
-                    onChange={props.handleInputTitleChange}
+                    onChange={props.onChange}
+                    value={props.question}
                 />
             </div>
     )

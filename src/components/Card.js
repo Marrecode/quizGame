@@ -11,8 +11,8 @@ class Card extends React.Component {
     }
 
     getPointsSingle = (e) => {
-        if(e.target.value === this.props.data.correct) {
-            this.props.onChange(this.props.data.points, this.props.name)
+        if(e.target.value === this.props.data.correct[0]) {
+            this.props.onChange(Number(this.props.data.points), this.props.name)
         } else {
             this.props.onChange(0, this.props.name)
         }
@@ -42,7 +42,7 @@ class Card extends React.Component {
         
         for(let i = 0; i < this.state.multipleCorrectArray.length; i++) {
             if(this.props.data.correct.includes(this.state.multipleCorrectArray[i])) {
-                points = points + (this.props.data.points/this.props.data.correct.length)
+                points = points + (Number(this.props.data.points)/this.props.data.correct.length)
             }
         }
         
@@ -50,26 +50,25 @@ class Card extends React.Component {
     }
 
     
-    // Ger endast poäng om man klickat i alla rätta svar...
-    // checkMultiple = () => {
-    //     //Kolla om arrayen stämmer överens med den correcta arrayen, om det gör det, sätt poäng, om inte, sätt poäng till 0
-    //     if(this.state.multipleCorrectArray.length !== this.props.data.correct.length) {
-    //         return 0
-    //     } else {
-    //         let sortedStateArray = this.state.multipleCorrectArray
-    //         sortedStateArray.sort()
+    checkMultiple = () => {
+        //Kolla om arrayen stämmer överens med den correcta arrayen, om det gör det, sätt poäng, om inte, sätt poäng till 0
+        if(this.state.multipleCorrectArray.length !== this.props.data.correct.length) {
+            return 0
+        } else {
+            let sortedStateArray = this.state.multipleCorrectArray
+            sortedStateArray.sort()
 
-    //         let sortedCorrectArray = this.props.data.correct.sort()
+            let sortedCorrectArray = this.props.data.correct.sort()
 
-    //         for(let i = 0; i < sortedCorrectArray.length; i++) {
-    //             if(sortedCorrectArray[i] !== sortedStateArray[i]) {
-    //                 return 0
-    //             } else {
-    //                 return this.props.data.points
-    //             }
-    //         }
-    //     }
-    // }
+            for(let i = 0; i < sortedCorrectArray.length; i++) {
+                if(sortedCorrectArray[i] !== sortedStateArray[i]) {
+                    return 0
+                } else {
+                    return this.props.data.points
+                }
+            }
+        }
+    }
 
     
     render() {

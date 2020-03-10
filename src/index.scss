@@ -53,3 +53,16 @@ a {
 .points-text {
     font-size: 2rem;
 }
+
+#login {
+    margin:auto;
+    max-width: 800px;
+}
+
+h3 {
+    text-align: center;
+}
+
+nav-item.logout {
+    cursor: pointer;
+}

@@ -6,6 +6,7 @@ import AddQuestionsForm from '../forms/questionForm/AddQuestionsForm'
 class AddTitle extends React.Component{
     state = {
         title: '',
+        description: '',
         id: null,
         isSubmitted: false,
     }
@@ -16,11 +17,18 @@ class AddTitle extends React.Component{
         
         const create = {
             title: this.state.title,
-            questions: []
+            questions: [{
+                answers: [''],
+                question: '',
+                type: '',
+                correct: ['']
+            }]
         }
 
         db.collection("quiz").add( create ).then(doc=> {
             console.log("My title is: ", this.state.title)
+            console.log("My title is: ", this.state.description)
+            
             this.setState({
                 id: doc.id
             },() => this.props.history.push('/addquiz/' + this.state.id))
@@ -48,16 +56,25 @@ class AddTitle extends React.Component{
                 <Link to="/" className="btn btn-danger mt-3">Home</Link>
             </div>
 
-            <form onSubmit={this.handleForm}> 
+            <form onSubmit={this.handleForm}>
 
             <input
                     type="text"
                     id="title"
                     aria-label="Title of you Quiz"
-                    placeholder="Quiztitle"
+                    placeholder="Quiz title"
                     className="form-control"
                     onChange={this.handleInputChange}
 					value={this.state.title}
+                />
+            <input
+                    type="description"
+                    id="description"
+                    aria-label="Title of you Quiz"
+                    placeholder="Quiz Description"
+                    className="form-control"
+                    onChange={this.handleInputChange}
+					value={this.state.description}
                 />
         
         {/* <button type="submit" className="btn btn-primary mt-3">Submit</button> */}
