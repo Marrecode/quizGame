@@ -51,13 +51,20 @@ class App extends React.Component {
 					}
 
 					<Switch>
-						<Route path='/' component={FrontPage} />
+						<Route exact path='/' component={FrontPage} />
 						<Route exact path='/forms/AddTitle' component={AddTitle} />
 						<Route path='/quiz/:quiz_id' component={QuizPage} />
 						<Route path='/login' component={LoginPage} />
 						{/* <Route path='/AddTitle/AddQuestionsForm' component={AddQuestionsForm} /> */}
 						<Route path='/addquiz/:id' component={AddQuestionsForm} />
-						<Route path='/makequiz/:id' component={AddQuiz} />
+						<Route path='/makequiz/:id' render={props =>
+						(
+							<AddQuiz
+							user={this.state.user}
+							{...props}
+							/>
+						)
+						} />
 						
 						{/* <Route component={NotFound} /> */}
 						
