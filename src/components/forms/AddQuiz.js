@@ -5,15 +5,24 @@ class AddQuiz extends React.Component {
         title: '',
         description:'',
         questions: [
+            // {
+            //     question:'',
+            //     answers: [""],
+            //     correct: '',
+            //     points: null,
+            //     type: null
+            // }
+        ],
+
+        temp: [
             {
                 question:'',
                 answers: [""],
-                correct: '',
+                correct:'',
                 points: null,
                 type: null
             }
-        ],
-
+        ]
     }
 
     handleInputChange = (e) => {
@@ -23,107 +32,138 @@ class AddQuiz extends React.Component {
         })
     }
 
-    handleAddQuestionClick = (e) => {
+    handleAddQuestion = (e) => {
         e.preventDefault();
-		const questions = this.state.questions;
-		questions.push({
-			question: '',
-            answers: [""],
-            correct: '',
-            points: null,
-            type: null
-        });
+        const questions = this.state.questions
+        questions.push(...this.state.temp)
 
-		this.setState({
-			questions
-		});
+        this.setState({
+            questions,
+            temp: [
+                {
+                    question:'',
+                    answers: [""],
+                    correct:'',
+                    points: null,
+                    type: null
+                }
+            ]
+        }, () => console.log(this.state))
     }
 
     handleAddAnswer = (e) => {
         e.preventDefault()
-        const newQuestions = [...this.state.questions]
-        const newAnswer = newQuestions[this.state.questions.length - 1].answers
+        const temp = [...this.state.temp]
+        const newAnswer = temp[this.state.temp.length - 1].answers
         newAnswer.push("")
 
-        // Add another input field for answer
         this.setState({
-            newQuestions
+            temp
         })
     }
 
 
-    handleInputStepChange = (e, i) => {
-		const questions = this.state.questions;
-		questions[i].question = e.target.value;
+    handleInputQuestionChange = (e, i) => {
+		const temp = this.state.temp;
+        temp[i].question = e.target.value;
 
 		this.setState({
-			questions
-		});
+			temp
+        },() => console.log(this.state));
+        
     }
     
     handleInputAnswersChange = (e, i) => {
-		const answers = this.state.questions[this.state.questions.length - 1].answers;
+        const answers = this.state.temp[this.state.temp.length - 1].answers;
         answers[i] = e.target.value;
-        
-        console.log(this.state.questions)
-        let questions = this.state.questions
+
+        console.log(this.state)
+        let temp = this.state.temp
 
 		this.setState({
-			questions
+			temp
 		});
-	}
+    }
+    
+
+    handleAddCorrect = (answer) => {
+        // KOLLA SÅ ATT DET ÄR CHECKAT!!!!
+        console.log(answer)
+        console.log(this.state.questions)
+    }
+
 
     render() {
-        // console.log(this.state)
         return(
-            <form className="container">
-                <input onChange={this.handleInputChange} id="title" className="form-control" type="text" placeholder="Enter the title of your quiz" />
-                <input onChange={this.handleInputChange} id="description" className="form-control" type="text" placeholder="Enter a description of your quiz" />
-
-
-                <div className="steps-wrapper mb-4">
-					{/* <h3>Questions</h3> */}
-					{
-						this.state.questions.map((question, i) =>(
-							<div key={i}>
-								<input
-									type="text"
-									className="form-control"
-									onChange={e => { this.handleInputStepChange(e, i) }}
-									aria-label={`Enter question ${i+1}`}
-									placeholder={`Enter question ${i+1}`}
-									value={question.title}
-								/>
-                    {
-                        this.state.questions[i].answers.map((answer, i) => (
-                            <div className="input-group">
-                            <input
-									type="text"
-									className="form-control"
-									onChange={e => { this.handleInputAnswersChange(e, i) }}
-									aria-label={`Enter answer ${i+1}`}
-									placeholder={`Enter answer ${i+1}`}
-									value={answer.title}
-								/>
-                                <div className="input-group-append">
-                                    <button onClick={this.handleAddAnswer}>Add answer</button>
+            <div>
+                <form className="container">
+                    <input onChange={this.handleInputChange} id="title" className="form-control" type="text" placeholder="Enter the title of your quiz" />
+                    <input onChange={this.handleInputChange} id="description" className="form-control" type="text" placeholder="Enter a description of your quiz" />
+    
+                <br/>
+                    <div className="steps-wrapper mb-4">
+    
+    					{
+    						this.state.temp.map((question, i) =>(
+    							<div key={i}>
+    								<input
+    									type="text"
+    									className="form-control"
+    									onChange={e => { this.handleInputQuestionChange(e, i) }}
+    									aria-label={`Enter question ${i+1}`}
+    									placeholder={`Enter question ${i+1}`}
+    									value={question.question}
+    								/>
+                        {
+                            this.state.temp[i].answers.map((answer, i) => (
+                                <div className="input-group">
+                                <input
+    									type="text"
+    									className="form-control"
+    									onChange={e => { this.handleInputAnswersChange(e, i) }}
+    									aria-label={`Enter answer ${i+1}`}
+    									placeholder={`Enter answer ${i+1}`}
+    									value={answer}
+    								/>
+                                    <div className="input-group-append">
+                                    <div class="input-group-text">
+                                        <input onChange={() => {this.handleAddCorrect(answer)}} type="checkbox" value={answer}/>
+                                    </div>
+                                        <button className="btn btn-success" onClick={this.handleAddAnswer}>Add answer</button>
+                                    </div>
                                 </div>
+                            ))
+                        }
+    
+    
+    							</div>
+    						))
+    					}
+    
+    					<div className="mt-3">
+    						<button className="btn btn-primary" onClick={this.handleAddQuestion}><span className="fas fa-plus-square"></span> Add question</button>
+    					</div>
+    				</div>
+    
+    
+                </form>
+
+                {this.state.questions
+                    ? (<div>
+                        {this.state.questions.map(q => (
+                            <div>
+                                <p>{q.question}</p>
+                                <ul>{q.answers.map(a => (
+                                    <li>{a}</li>
+                                ))}</ul>
                             </div>
-                        ))
-                    }
+                        ))}
+                    </div>)
+                    : ''
+                }
+            </div>
 
-
-							</div>
-						))
-					}
-
-					<div className="mt-3">
-						<button className="btn btn-primary" onClick={this.handleAddQuestionClick}><span className="fas fa-plus-square"></span> Add question</button>
-					</div>
-				</div>
-
-
-            </form>
+            
         )
     }
 }
