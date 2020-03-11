@@ -1,7 +1,7 @@
 import React  from 'react';
 import { Link } from 'react-router-dom'
 import { db } from '../../modules/firebase';
-import AddQuestionsForm from '../forms/questionForm/AddQuestionsForm'
+// import AddQuestionsForm from '../forms/questionForm/AddQuestionsForm'
 
 class AddTitle extends React.Component{
     state = {
