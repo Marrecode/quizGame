@@ -192,10 +192,10 @@ class AddQuiz extends React.Component {
                                         <div className="input-group-append">
 
                                         <div className="input-group-text">
-                                        <span className="mr-2">Check if correct</span>
+                                        <span className="mr-2">Correct answer</span>
                                             <input onChange={e => {this.handleAddCorrect(e, answer)}} type="checkbox" value={answer}/>
                                         </div>
-                                            <button className="btn btn-success" onClick={this.handleAddAnswer}>Add answer</button>
+                                            <button className="btn btn-primary" onClick={this.handleAddAnswer}>Add answer</button>
                                         </div>
                                     </div>
                                 ))
