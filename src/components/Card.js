@@ -23,10 +23,12 @@ class Card extends React.Component {
         if(!this.state.multipleCorrectArray.includes(checked)) {
             let array = [...this.state.multipleCorrectArray]
             array.push(checked)
+
             this.setState({
                 multipleCorrectArray: array
             }, () => this.props.onChange(this.checkMultiple(), this.props.name))
-        } else if(this.state.multipleCorrectArray.includes(checked)) {
+
+        } else {
             let newArray = this.state.multipleCorrectArray.filter(c => c !== checked)
             this.setState({
                 multipleCorrectArray: newArray
@@ -83,7 +85,8 @@ class Card extends React.Component {
         answer={q}
         name={this.props.name}
         key={i++} />)
-    : this.props.data.answers.map(q => 
+    : 
+    this.props.data.answers.map(q => 
         <MultiAnswer
         onChange={this.getPointsMultiple}
         correct={this.props.data.correct}
@@ -99,13 +102,6 @@ class Card extends React.Component {
                 <p className="card-text text-center">{this.props.data.question}</p>
                 <div 
                     className="d-flex flex-column ml-5"
-                // style={{
-                //     textAlign: 'left',
-                //     display:'flex',
-                //     marginLeft: '40%',
-                //     justifyContent: 'center',
-                //     flexDirection: 'column', 
-                //     alignItems:'justify'}}
                     >
                     {answers}
                 </div>

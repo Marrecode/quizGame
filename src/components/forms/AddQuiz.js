@@ -13,8 +13,9 @@ class AddQuiz extends React.Component {
                 points: '',
                 type: null
             }
-        ],
+        ]
     }
+
 
     handleInputChange = (e) => {
         this.setState({
@@ -105,14 +106,13 @@ class AddQuiz extends React.Component {
         if(e.target.checked && answer) {
             const temp = [...this.state.temp]
             temp[0].correct.push(answer)
-
             temp[0].type = this.checkType(temp)
-
             this.setState({
                 temp
             })
 
-        } else if(!e.target.checked) {
+        } 
+        else if(!e.target.checked) {
 
             let temp = [...this.state.temp]
             let filtered;
@@ -156,12 +156,26 @@ class AddQuiz extends React.Component {
         return(
             <div className="container">
                 <form className="container">
-                    <input onChange={this.handleInputChange} id="title" className="form-control" type="text" placeholder="Enter the title of your quiz" />
-                    <input onChange={this.handleInputChange} id="description" className="form-control" type="text" placeholder="Enter a description of your quiz" />
+                    <input 
+                    onChange={this.handleInputChange} 
+                    id="title" 
+                    className="form-control" type="text" 
+                    placeholder="Enter the title of your quiz" />
+
+                    <input 
+                    onChange={this.handleInputChange} 
+                    id="description" 
+                    className="form-control" 
+                    type="text" 
+                    placeholder="Enter a description of your quiz" />
     
                     <div className="steps-wrapper" style={{paddingTop: '2rem'}}>
 
-                        <input onChange={this.handleInputQuestionChange} id="question" className="form-control" type="text" placeholder="Enter a question" value={this.state.temp[0].question} />
+                        <input 
+                        onChange={this.handleInputQuestionChange} 
+                        id="question" className="form-control" 
+                        type="text" placeholder="Enter a question" 
+                        value={this.state.temp[0].question} />
         
                             {
                                 this.state.temp[0].answers.map((answer, i) => (
@@ -188,24 +202,15 @@ class AddQuiz extends React.Component {
 
 
                         <div style={{paddingTop: '2rem'}}>
-                            {/* <label style={{color: '#fff'}}>Add ponts</label> */}
-
                             <input className="form-control" placeholder="Enter how many points your question is worth" value={this.state.temp[0].points} onChange={this.handleAddPoints}/>
-
-
-                            {/* <input type='number'
-                            className='form-control'
-                            onChange={this.handleAddPoints} 
-                            aria-label={'add how many points your question is worth'}
-                            placeholder={'enter points'}
-                            value={this.state.temp[0].points}
-                            /> */}
                         </div>
     
     					<div className="mt-3">
-    						<button className="btn btn-primary" onClick={this.handleAddQuestion}><span className="fas fa-plus-square"></span> Add question</button>
+    						<button 
+                            className="btn btn-primary" 
+                            onClick={this.handleAddQuestion}>
+                            <span className="fas fa-plus-square" />Add question</button>
     					</div>
-    				{/* </div> */}
     
                         <button onClick={this.handleSubmitQuiz} className="btn btn-success">Submit Quiz</button>
                 </form>
@@ -218,7 +223,7 @@ class AddQuiz extends React.Component {
                         ? (<div>
                             {/* <h2>And these are my questions</h2> */}
                             {this.state.questions.map(q => (
-                                <div>
+                                <div key={q.id}>
                                     <p>{q.question}</p>
                                     <ul>{q.answers.map(a => (
                                         <li>{a}</li>

@@ -10,14 +10,14 @@ const Navbar = (props) => {
         console.log('want to sign out')
         auth.signOut()
         .then(() => {
-            console.log('signed out');
+            console.log('signed out')
         })
     }
 
     return(
         <nav className="navbar navbar-expand-lg navbar-light bg-light mb-5">
             <div className="container">
-            <Link to="/" className="navbar-brand">The Awesome Quizzes</Link>
+            <Link to="/" className="navbar-brand">QG4</Link>
                 
                 <div className="navbar-" id="navbarNav">
                     <ul className="navbar-nav ml-auto">

@@ -1,6 +1,5 @@
 import React from 'react';
 import { auth } from '../../modules/firebase';
-import { Link } from 'react-router-dom'
 
 class signUp extends React.Component {
     state = {
