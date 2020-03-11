@@ -1,7 +1,6 @@
 import React from 'react'
 import Answer from './Answer'
 import MultiAnswer from './MultiAnswer'
-// import { v4 as uuidv4 } from 'uuid';
 
 
 class Card extends React.Component {
@@ -39,18 +38,12 @@ class Card extends React.Component {
 
     checkMultiple = () => {
         let points = 0
-
-        // FIXA SÅ ATT MAN INTE FÅR ALLA RÄTT OM MAN BARA KLICKAR I ALLT GDDDAMMIIITTT
         
         for(let i = 0; i < this.state.multipleCorrectArray.length; i++) {
-            // console.log(this.state.multipleCorrectArray)
-            // console.log(this.props.data.correct)
             if(this.props.data.correct.includes(this.state.multipleCorrectArray[i])) {
                 points = points + (Number(this.props.data.points)/this.props.data.correct.length)
             }
-        }
-        // console.log(points)
-        
+        }        
         return points
     }
 

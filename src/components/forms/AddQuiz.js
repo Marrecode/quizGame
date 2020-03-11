@@ -97,7 +97,7 @@ class AddQuiz extends React.Component {
         temp[0].points = e.target.value;
         this.setState({
             temp
-        },() => console.log(this.state.temp[0].points));
+        });
     }
 
 
@@ -110,14 +110,13 @@ class AddQuiz extends React.Component {
 
             this.setState({
                 temp
-            },() => console.log('added', this.state.temp))
+            })
 
         } else if(!e.target.checked) {
 
             let temp = [...this.state.temp]
             let filtered;
 
-            console.log(this.state.temp[0].correct)
             if(temp[0].correct.includes(answer)) {
                 filtered = temp[0].correct.filter(r => r !== answer)
                 temp[0].correct = filtered
@@ -125,7 +124,7 @@ class AddQuiz extends React.Component {
 
             this.setState({
                 temp
-            }, () => console.log('removed',this.state.temp))
+            })
         }
     }
 
