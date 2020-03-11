@@ -190,6 +190,10 @@ class AddQuiz extends React.Component {
                                         />
                                         <div className="input-group-append">
                                         <div className="input-group-text">
+                                            Check if correct
+                                        </div>
+
+                                        <div className="input-group-text">
                                             <input onChange={e => {this.handleAddCorrect(e, answer)}} type="checkbox" value={answer}/>
                                         </div>
                                             <button className="btn btn-success" onClick={this.handleAddAnswer}>Add answer</button>
@@ -215,22 +219,21 @@ class AddQuiz extends React.Component {
                         </div>  
                 </form>
 
-                <div className="displaying-quizes text-center text-white">
+                <div className="displaying-quizzes text-center text-white mt-5">
                     <h1>{this.state.title}</h1>
                     <p>{this.state.description}</p>
-    
+
                     {this.state.questions
                         ? (<div>
-                            {/* <h2>And these are my questions</h2> */}
                             {this.state.questions.map(q => (
-                                <div key={q.id}>
+                                <div key={q.id} className="border border-white w-50 mx-auto mb-3 p-3">
                                     <p>{q.question}</p>
-                                    <ul>{q.answers.map(a => (
+                                    <ul className="m-0">{q.answers.map(a => (
                                         <li>{a}</li>
                                     ))}</ul>
                                 </div>
                             ))}
-                        </div>)
+                            </div>)
                         : ''
                     }
                 </div>
