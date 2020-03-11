@@ -204,15 +204,15 @@ class AddQuiz extends React.Component {
                         <div style={{paddingTop: '2rem'}}>
                             <input className="form-control" placeholder="Enter how many points your question is worth" value={this.state.temp[0].points} onChange={this.handleAddPoints}/>
                         </div>
-    
-    					<div className="mt-3">
+                        <div className="buttons mt-3">    					
     						<button 
                             className="btn btn-primary" 
                             onClick={this.handleAddQuestion}>
-                            <span className="fas fa-plus-square" />Add question</button>
-    					</div>
-    
+                            <span className="fas fa-plus-square" />Add question
+                            </button>
+    		   
                         <button onClick={this.handleSubmitQuiz} className="btn btn-success">Submit Quiz</button>
+                        </div>  
                 </form>
 
                 <div className="displaying-quizes text-center text-white">
