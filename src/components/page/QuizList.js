@@ -9,7 +9,7 @@ const QuizList = props => {
                 <Link to={'/quiz/' + props.info.id} className="h-100">
                     <div className="card-body">
                     <h5>{props.info.title}</h5>
-                        <p className="card-text">{props.info.description}</p>
+                        <p className="card-text text-dark">{props.info.description}</p>
                     </div>
                 </Link>
                 </div>
