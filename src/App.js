@@ -39,14 +39,15 @@ class App extends React.Component {
 		<div className="App">
 			<BrowserRouter>
 				<div id="App">
-					<Navbar user={this.state.user} />
 					{
 						this.state.user 
 						? 
-						(<h3 className='logIn'>You are logged in! {this.state.user.email}</h3>)
+						(<h5 className='log navbar-light bg-light'>You are logged in! {this.state.user.email}</h5>)
 						:
-						(<h3 className='logOut'>Sign in to create a quiz</h3>)
+						(<h5 className='log navbar-light bg-light'>Sign in to create a quiz</h5>)
 					}
+					<Navbar user={this.state.user} />
+
 
 					<Switch>
 						<Route exact path='/' component={FrontPage} />
