@@ -66,3 +66,7 @@ h3 {
 nav-item.logout {
     cursor: pointer;
 }
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
