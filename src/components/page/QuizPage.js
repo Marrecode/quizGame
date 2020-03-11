@@ -34,7 +34,6 @@ class QuizPage extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault()
 
-        console.log(this.state.points)
         document.querySelectorAll('.questions-form .card').forEach(c => {
             if(this.state.points[c.id] > 0) {
                 c.classList.add('right')

@@ -155,7 +155,8 @@ class AddQuiz extends React.Component {
         
         return(
             <div className="container">
-                <form className="container">
+                <h1 className="text-center mb-3">Create your quiz</h1>
+                <form>
                     <input 
                     onChange={this.handleInputChange} 
                     id="title" 
@@ -189,11 +190,9 @@ class AddQuiz extends React.Component {
                                             value={answer}
                                         />
                                         <div className="input-group-append">
-                                        <div className="input-group-text">
-                                            Check if correct
-                                        </div>
 
                                         <div className="input-group-text">
+                                        <span className="mr-2">Check if correct</span>
                                             <input onChange={e => {this.handleAddCorrect(e, answer)}} type="checkbox" value={answer}/>
                                         </div>
                                             <button className="btn btn-success" onClick={this.handleAddAnswer}>Add answer</button>

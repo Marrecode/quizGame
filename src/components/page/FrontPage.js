@@ -11,7 +11,6 @@ class FrontPage extends Component {
         }
 
     componentDidMount = () => {
-
         const quizzes = []
 
         db.collection("quiz").get().then((querySnapshot) => {

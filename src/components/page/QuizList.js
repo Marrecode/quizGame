@@ -8,7 +8,7 @@ const QuizList = props => {
                 <div className="card h-100 m-md-2">
                 <Link to={'/quiz/' + props.info.id} className="h-100">
                     <div className="card-body">
-                    <h5>{props.info.title}</h5>
+                    <h5 className="border-bottom border-dark">{props.info.title}</h5>
                         <p className="card-text text-dark">{props.info.description}</p>
                     </div>
                 </Link>

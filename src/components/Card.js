@@ -101,7 +101,7 @@ class Card extends React.Component {
                 <h5 className="card-title text-center">Fråga {this.props.name + 1}</h5>
                 <p className="card-text text-dark text-center">{this.props.data.question}</p>
                 <div 
-                    className="d-flex flex-column ml-5"
+                    className="d-flex flex-column ml-3 ml-sm-5 text-dark"
                     >
                     {answers}
                 </div>
