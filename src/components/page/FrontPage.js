@@ -54,10 +54,8 @@ class FrontPage extends Component {
             <div>    
                 <div className="container">
                     <div className="card-group d-flex flex-column flex-md-row">
-                        {newArr}
-                    {/* <Link to={'/AddQuizForm'} className="btn btn-success mt-md-3 mx-2 w-100">Create Quiz</Link> */}
+                        {newArr}     
                     </div>
-                    {/* <Link to={'./AddTitle'} className="btn btn-success mt-3 w-100">Create Quiz</Link> */}
                     <Link onClick={this.makeNewQuiz} to={'/makequiz/'} className="btn btn-success mt-3 w-100">Create Quiz</Link>
                 </div>
 
