@@ -4,7 +4,6 @@ import QuizList from './QuizList'
 import { Link } from 'react-router-dom'
 
 
-
 class FrontPage extends Component {
 
         state = {
@@ -44,7 +43,6 @@ class FrontPage extends Component {
     }
 
     render() {
-
         const newArr = this.state.quiz.map(quiz => {
             const ql = quiz.title ? <QuizList key={quiz.id} info={quiz} /> : null
             return (
@@ -60,7 +58,7 @@ class FrontPage extends Component {
                     {/* <Link to={'/AddQuizForm'} className="btn btn-success mt-md-3 mx-2 w-100">Create Quiz</Link> */}
                     </div>
                     {/* <Link to={'./AddTitle'} className="btn btn-success mt-3 w-100">Create Quiz</Link> */}
-                    <Link onClick={this.makeNewQuiz} to={'/makeQuiz/'} className="btn btn-success mt-3 w-100">Create Quiz</Link>
+                    <Link onClick={this.makeNewQuiz} to={'/makequiz/'} className="btn btn-success mt-3 w-100">Create Quiz</Link>
                 </div>
 
             </div>

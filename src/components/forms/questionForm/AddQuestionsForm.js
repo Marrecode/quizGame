@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import {Link, NavLink} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import { db } from '../../../modules/firebase'
 import AddQuestions from './questionFormComponents/AddQuestions'
 import AddAnswers from './questionFormComponents/AddAnswers'
-import AddTitle from '../AddTitle'
+// import AddTitle from '../AddTitle'
 import AddCorrectAnswer from './questionFormComponents/AddCorrectAnswer'
 import AddType from './questionFormComponents/AddType'
 

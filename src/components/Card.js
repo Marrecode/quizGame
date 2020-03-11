@@ -1,7 +1,7 @@
 import React from 'react'
 import Answer from './Answer'
 import MultiAnswer from './MultiAnswer'
-// import { v4 as uuidv4 } from 'uuid';
+
 
 
 class Card extends React.Component {
@@ -36,45 +36,47 @@ class Card extends React.Component {
             }, () => this.props.onChange(this.checkMultiple(), this.props.name))
         }
     }
-
-    // checkMultiple = () => {
-    //     let points = 0
-
-    //     // FIXA SÅ ATT MAN INTE FÅR ALLA RÄTT OM MAN BARA KLICKAR I ALLT GDDDAMMIIITTT
-        
-    //     for(let i = 0; i < this.state.multipleCorrectArray.length; i++) {
-    //         console.log(this.state.multipleCorrectArray)
-    //         console.log(this.props.data.correct)
-    //         if(this.props.data.correct.includes(this.state.multipleCorrectArray[i])) {
-    //             points = points + (Number(this.props.data.points)/this.props.data.correct.length)
-    //         }
-    //     }
-    //     console.log(points)
-        
-    //     return points
-    // }
-
     
-    // Ger endast poäng om man klickat i alla rätta svar...
+
+
     checkMultiple = () => {
-        //Kolla om arrayen stämmer överens med den correcta arrayen, om det gör det, sätt poäng, om inte, sätt poäng till 0
-        if(this.state.multipleCorrectArray.length !== this.props.data.correct.length) {
-            return 0
-        } else {
-            let sortedStateArray = this.state.multipleCorrectArray
-            sortedStateArray.sort()
+        let points = 0
 
-            let sortedCorrectArray = this.props.data.correct.sort()
-
-            for(let i = 0; i < sortedCorrectArray.length; i++) {
-                if(sortedCorrectArray[i] === sortedStateArray[i]) {
-                    return this.props.data.points
-                } else {
-                    return 0
-                }
+        // FIXA SÅ ATT MAN INTE FÅR ALLA RÄTT OM MAN BARA KLICKAR I ALLT GDDDAMMIIITTT
+        
+        for(let i = 0; i < this.state.multipleCorrectArray.length; i++) {
+            // console.log(this.state.multipleCorrectArray)
+            // console.log(this.props.data.correct)
+            if(this.props.data.correct.includes(this.state.multipleCorrectArray[i])) {
+                points = points + (Number(this.props.data.points)/this.props.data.correct.length)
             }
         }
+        // console.log(points)
+        
+        return points
     }
+
+    
+    // // Ger endast poäng om man klickat i alla rätta svar...
+    // checkMultiple = () => {
+    //     //Kolla om arrayen stämmer överens med den correcta arrayen, om det gör det, sätt poäng, om inte, sätt poäng till 0
+    //     if(this.state.multipleCorrectArray.length !== this.props.data.correct.length) {
+    //         return 0
+    //     } else {
+    //         let sortedStateArray = this.state.multipleCorrectArray
+    //         sortedStateArray.sort()
+
+    //         let sortedCorrectArray = this.props.data.correct.sort()
+
+    //         for(let i = 0; i < sortedCorrectArray.length; i++) {
+    //             if(sortedCorrectArray[i] !== sortedStateArray[i]) {
+    //                 return 0
+    //             } else {
+    //                 return this.props.data.points
+    //             }
+    //         }
+    //     }
+    // }
 
     
     render() {
@@ -90,7 +92,8 @@ class Card extends React.Component {
         answer={q}
         name={this.props.name}
         key={i++} />)
-    : this.props.data.answers.map(q => 
+    : 
+    this.props.data.answers.map(q => 
         <MultiAnswer
         onChange={this.getPointsMultiple}
         correct={this.props.data.correct}
