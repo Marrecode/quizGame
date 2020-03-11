@@ -19,6 +19,8 @@ const Navbar = (props) => {
             <div className="container">
             <Link to="/" className="navbar-brand">QG4</Link>
                 
+            <h3 className='logIn'>You are logged in! {this.state.user.email}</h3>
+            
                 <div className="navbar-" id="navbarNav">
                     <ul className="navbar-nav ml-auto">
                     
