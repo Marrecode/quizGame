@@ -25,6 +25,14 @@ $body-color: black;
 //         }
 // }
 
+body {
+    background-color: pink;
+}
+
+h1-h6, p, a {
+    color: white;
+}
+
 .card-container {
     flex-basis: 30%;
     min-height: 8rem;
@@ -48,6 +56,19 @@ a {
         text-decoration: none;
         // background-color: rgb(0, 204, 255)
     }
+}
+
+ul {
+
+    list-style-type: none;
+
+    li {
+
+    }
+}
+
+.navbar {
+    background-color: pink;
 }
 
 .points-text {

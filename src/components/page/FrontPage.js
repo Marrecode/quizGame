@@ -2,9 +2,7 @@ import React, {Component} from 'react'
 import { db } from '../../modules/firebase'
 import QuizList from './QuizList'
 import { Link } from 'react-router-dom'
-import Navbar from '../page/Navbar'
-import AddQuestionsForm from '../forms/questionForm/AddQuestionsForm'
-import AddTitle from '../forms/AddTitle'
+
 
 
 class FrontPage extends Component {
@@ -29,14 +27,6 @@ class FrontPage extends Component {
         })
     }
 
-    delteQuiz = () => {
-        db.collection("quiz").doc(e.target.value.id).delete().then(function() {
-            console.log("Document successfully deleted!");
-        }).catch(function(error) {
-            console.error("Error removing document: ", error);
-        });
-        
-    }
 
     makeNewQuiz = () => {
 

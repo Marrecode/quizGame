@@ -36,7 +36,7 @@ class Card extends React.Component {
             }, () => this.props.onChange(this.checkMultiple(), this.props.name))
         }
     }
-    
+
     // checkMultiple = () => {
     //     let points = 0
 
@@ -106,13 +106,6 @@ class Card extends React.Component {
                 <p className="card-text text-center">{this.props.data.question}</p>
                 <div 
                     className="d-flex flex-column ml-5"
-                // style={{
-                //     textAlign: 'left',
-                //     display:'flex',
-                //     marginLeft: '40%',
-                //     justifyContent: 'center',
-                //     flexDirection: 'column', 
-                //     alignItems:'justify'}}
                     >
                     {answers}
                 </div>

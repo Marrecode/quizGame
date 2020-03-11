@@ -235,17 +235,9 @@ class AddQuiz extends React.Component {
 
                         <div style={{paddingTop: '2rem'}}>
                             <label style={{color: '#fff'}}>Add ponts</label>
-
-                            <input value={this.state.temp[0].points} onChange={this.handleAddPoints}/>
-
-
-                            {/* <input type='number'
-                            className='form-control'
-                            onChange={this.handleAddPoints} 
-                            aria-label={'add how many points your question is worth'}
-                            placeholder={'enter points'}
-                            value={this.state.temp[0].points}
-                            /> */}
+                            <input 
+                            value={this.state.temp[0].points} 
+                            onChange={this.handleAddPoints}/>
                         </div>
     
     					<div className="mt-3">
