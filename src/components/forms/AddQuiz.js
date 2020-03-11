@@ -150,7 +150,10 @@ class AddQuiz extends React.Component {
 
     render() {
         
-
+        if (!this.props.user) {
+            this.props.history.push('/login')
+        }
+        
         return(
             <div className="container">
                 <form className="container">

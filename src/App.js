@@ -57,7 +57,14 @@ class App extends React.Component {
 						<Route path='/login' component={LoginPage} />
 						{/* <Route path='/AddTitle/AddQuestionsForm' component={AddQuestionsForm} /> */}
 						<Route path='/addquiz/:id' component={AddQuestionsForm} />
-						<Route path='/makequiz/:id' component={AddQuiz} />
+						<Route path='/makequiz/:id' render={props =>
+						(
+							<AddQuiz
+							user={this.state.user}
+							{...props}
+							/>
+						)
+						} />
 						
 						{/* <Route component={NotFound} /> */}
 						
