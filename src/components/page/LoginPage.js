@@ -1,5 +1,6 @@
 import React from 'react';
 import { auth } from '../../modules/firebase'
+import { Link } from 'react-router-dom'
 
 class LoginPage extends React.Component {
     state = {
@@ -30,6 +31,13 @@ class LoginPage extends React.Component {
 
     }
 
+
+
+    signUp = () => {
+        this.props.history.push('/signUp/') 
+        }
+
+
         render() {
             return (
             <div id="login">
@@ -45,7 +53,9 @@ class LoginPage extends React.Component {
                     <input type="password" id="password" className="form-control" onChange={this.formOnChange}/>
                 </div>
                 <button type="submit" className="btn btn-primary">Log in</button>
+                <Link onClick={this.signUp} class="btn btn-success">Sign Up</Link>            
                 </form>
+                
             </div>
         )
     }
