@@ -39,7 +39,7 @@ class signUp extends React.Component {
                     <div className="form-group">
                         <label htmlFor="createPassword"></label>
                         <input type="password" placeholder="create password" id="createPassword" className="form-control" onChange={this.handleChange}/>
-                        <button type="submit" className="btn btn-primary">Create User</button>
+                        <button type="submit" id="buttonCreate" className="btn btn-primary">Create User</button>
                     </div>
                 </form>
             </div>

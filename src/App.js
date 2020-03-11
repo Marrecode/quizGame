@@ -45,7 +45,7 @@ class App extends React.Component {
 						? 
 						(<h3 className='logIn'>You are logged in! {this.state.user.email}</h3>)
 						:
-						(<h3 className='logOut'>You are logged out!</h3>)
+						(<h3 className='logOut'>Sign in to create a quiz</h3>)
 					}
 
 					<Switch>
