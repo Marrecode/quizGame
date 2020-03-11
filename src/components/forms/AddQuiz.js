@@ -155,7 +155,7 @@ class AddQuiz extends React.Component {
         
         return(
             <div className="container">
-                <h1 className="text-center mb-3">Create your quiz</h1>
+                <h1 className="text-center text-dark mb-3">Create your quiz</h1>
                 <form>
                     <input 
                     onChange={this.handleInputChange} 
