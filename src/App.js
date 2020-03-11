@@ -9,6 +9,7 @@ import LoginPage from './components/page/LoginPage'
 import AddTitle from './components/forms/AddTitle'
 import AddQuiz from './components/forms/AddQuiz'
 import { auth } from './modules/firebase'
+import signUp from './components/page/signUp'
 
 
 
@@ -55,6 +56,7 @@ class App extends React.Component {
 						<Route exact path='/forms/AddTitle' component={AddTitle} />
 						<Route path='/quiz/:quiz_id' component={QuizPage} />
 						<Route path='/login' component={LoginPage} />
+						<Route path='/signUp' component={signUp} />
 						{/* <Route path='/AddTitle/AddQuestionsForm' component={AddQuestionsForm} /> */}
 						<Route path='/addquiz/:id' component={AddQuestionsForm} />
 						<Route path='/makequiz/:id' render={props =>

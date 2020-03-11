@@ -62,9 +62,6 @@ ul {
 
     list-style-type: none;
 
-    li {
-
-    }
 }
 
 .navbar {
@@ -75,7 +72,7 @@ ul {
     font-size: 2rem;
 }
 
-#login {
+.login {
     margin:auto;
     max-width: 800px;
 }
@@ -86,4 +83,9 @@ h3 {
 
 nav-item.logout {
     cursor: pointer;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
 }
