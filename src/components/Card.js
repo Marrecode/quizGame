@@ -24,10 +24,12 @@ class Card extends React.Component {
         if(!this.state.multipleCorrectArray.includes(checked)) {
             let array = [...this.state.multipleCorrectArray]
             array.push(checked)
+
             this.setState({
                 multipleCorrectArray: array
             }, () => this.props.onChange(this.checkMultiple(), this.props.name))
-        } else if(this.state.multipleCorrectArray.includes(checked)) {
+
+        } else {
             let newArray = this.state.multipleCorrectArray.filter(c => c !== checked)
             this.setState({
                 multipleCorrectArray: newArray
@@ -65,10 +67,10 @@ class Card extends React.Component {
             let sortedCorrectArray = this.props.data.correct.sort()
 
             for(let i = 0; i < sortedCorrectArray.length; i++) {
-                if(sortedCorrectArray[i] !== sortedStateArray[i]) {
-                    return 0
-                } else {
+                if(sortedCorrectArray[i] === sortedStateArray[i]) {
                     return this.props.data.points
+                } else {
+                    return 0
                 }
             }
         }

@@ -10,7 +10,7 @@ const Navbar = (props) => {
         console.log('want to sign out')
         auth.signOut()
         .then(() => {
-            console.log('signed out');
+            console.log('signed out')
         })
     }
 
