@@ -34,12 +34,22 @@ class QuizPage extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault()
 
+        console.log(this.state.points)
+        document.querySelectorAll('.questions-form .card').forEach(c => {
+            if(this.state.points[c.id] > 0) {
+                c.classList.add('right')
+            } else {
+                c.classList.add('wrong')
+            }
+        })
+
         let sumPoints = this.state.points.reduce((sum, points) => {
             if(!sum) {
                 sum = 0
             }
             return sum + Number(points)
         }, 0)
+        
         this.setState({
             sumPoints: sumPoints
         })
@@ -78,7 +88,7 @@ class QuizPage extends React.Component {
                     : ''
                 }
                 
-                <div className="form-group w-md-75">
+                <div className="form-group questions-form w-md-75">
                     {card}
 
                     {this.state.sumPoints >= 0
@@ -86,7 +96,7 @@ class QuizPage extends React.Component {
                         : ''
                     }
 
-                    <button className="btn btn-success w-100" type="submit">Send Answers</button>
+                    <button className="btn btn-success w-100" type="submit">Get result</button>
                 </div>
             </form>
         </div>
