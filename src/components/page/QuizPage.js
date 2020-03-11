@@ -1,7 +1,6 @@
 import React from 'react'
 import Card from '../Card'
 import { db } from '../../modules/firebase'
-// import { v4 as uuidv4 } from 'uuid';
 
 class QuizPage extends React.Component {
     
@@ -12,17 +11,25 @@ class QuizPage extends React.Component {
     
     componentDidMount() {
         db.collection('quiz').doc(this.props.match.params.quiz_id).get().then(querySnapshot => {
-            this.setState({quiz: querySnapshot.data()})
+            let questions = querySnapshot.data().questions.map(q => {
+                this.shuffle(q.answers)
+                return q
+            })
+            this.setState({quiz: {
+                title: querySnapshot.data().title,
+                questions,
+                description: querySnapshot.data().description
+            }})
         })
     }
 
-    // shuffle(array) {
-    //     for (let i = array.length - 1; i > 0; i--) {
-    //         const j = Math.floor(Math.random() * (i + 1));
-    //         [array[i], array[j]] = [array[j], array[i]];
-    //     }
-    //     return array
-    // }
+    shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array
+    }
 
     handleSubmit = (e) => {
         e.preventDefault()

@@ -25,6 +25,14 @@ $body-color: black;
 //         }
 // }
 
+body {
+    background-color: pink;
+}
+
+h1-h6, p, a {
+    color: white;
+}
+
 .card-container {
     flex-basis: 30%;
     min-height: 8rem;
@@ -50,6 +58,16 @@ a {
     }
 }
 
+ul {
+
+    list-style-type: none;
+
+}
+
+.navbar {
+    background-color: pink;
+}
+
 .points-text {
     font-size: 2rem;
 }
@@ -66,11 +84,15 @@ h3 {
 nav-item.logout {
     cursor: pointer;
 }
+
 .buttons {
     display: flex;
     justify-content: space-between;
 }
+<<<<<<< HEAD
 
 #buttonCreate {
     margin-top: 1rem;
 }
+=======
+>>>>>>> master
